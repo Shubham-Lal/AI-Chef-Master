@@ -22,6 +22,7 @@ import base64
 from flask_apscheduler import APScheduler
 from email.message import EmailMessage
 from flask_mail import Mail ,Message
+from functools import lru_cache
 
 
 app = Flask(__name__)
@@ -242,6 +243,7 @@ def process():
     return jsonify({'message': 'Data inserted successfully'}), 201
 
 @app.route('/dishes', methods=['GET'])
+@lru_cache(maxsize=None)
 def get_dishes():
     dishes = db['Dish'].find()
     
