@@ -241,6 +241,17 @@ def process():
     result = db.CI.insert_one(data)
     return jsonify({'message': 'Data inserted successfully'}), 201
 
+@app.route('/dishes', methods=['GET'])
+def get_dishes():
+    dishes = db['Dish'].find()
+    
+    dishes_list = []
+    for dish in dishes:
+        dish['_id'] = str(dish['_id'])
+        dishes_list.append(dish)
+    
+    return jsonify(dishes_list), 201
+
 # app.config['UPLOAD_FOLDER'] = 'files'
 @app.route('/career' ,methods = ['POST'])
 def carrer():
