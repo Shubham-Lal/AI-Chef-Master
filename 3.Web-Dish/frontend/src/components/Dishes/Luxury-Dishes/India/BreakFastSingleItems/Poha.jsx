@@ -7,33 +7,14 @@ import NumberOfPeople from '../../../../../components/SingleDishItems/NumberOfPe
 import MainIngradients from "../../../../SingleDishItems/MainIngradients";
 import { Link } from "react-router-dom";
 import { IndianBreakFast } from "../../../../../Data/LuxuryDishesData/IndianDishes/IndianBreakFast";
-const options = [
-  { label: "Flattened Rice (Poha)", value: "poha" },
-  { label: "Mustard Seeds", value: "mustard_seeds" },
-  { label: "Curry Leaves", value: "curry_leaves" },
-  { label: "Turmeric Powder", value: "turmeric_powder" },
-  { label: "Onions", value: "onions" },
-  { label: "Green Chillies", value: "green_chillies" },
-  { label: "Potatoes", value: "potatoes" },
-  { label: "Peanuts", value: "peanuts" },
-  { label: "Coriander Leaves", value: "coriander_leaves" },
-  { label: "Lemon Juice", value: "lemon_juice" },
-  { label: "Oil", value: "oil" },
-  { label: "Salt", value: "salt" },
-  { label: "Cumin Seeds", value: "cumin_seeds" },
-  { label: "Chopped Tomatoes", value: "chopped_tomatoes" },
-  { label: "Green Peas", value: "green_peas" },
-  { label: "Cashews", value: "cashews" },
-];
-
-const NutritionValue = [
-  { title: "Calories", quantity: "300" },
-  { title: "Protein", quantity: "5g" },
-  { title: "Carbs", quantity: "40g" },
-  { title: "Fats", quantity: "15g" },
-  { title: "Fiber", quantity: "3g" },
-];
-
+import Marquee from 'react-fast-marquee';
+import { useSpring, animated } from 'react-spring';
+import Flip from 'react-reveal/Flip';  
+import 'animate.css/animate.min.css';
+import Card2 from "../../../../Card2";
+import RecommendedData from "../../../../../Data/RecommendedData";
+import Footer from "../../../../FooterItem/Footer";
+ 
 const mainIngredients = [
   { title: "Flattened Rice (Poha) 🍚" },
   { title: "Mustard Seeds 🌰", quantity: "1 tsp" },
@@ -56,7 +37,11 @@ const kitchenEq = [
 ];
 
 function Poha() {
-const [isValue, setValue] = useState([options[0].value]);
+  const [fadeIn, setFadeIn] = useSpring(() => ({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: { duration: 1000 },
+  }));
 
 const dishProps = {
 dishTitle: IndianBreakFast[2].dishName ,
@@ -70,7 +55,7 @@ dishType: "Vegetarian",
 };
  
 return (
-<div className="bg-[#f7f3cd]">
+<div className="bg-[#f7f3cd] min-h-screen">
     <SingleDish
         dishTitle={dishProps.dishTitle}
         dishImage={dishProps.dishImage}
@@ -95,7 +80,23 @@ return (
         </Link>
     </div>
 
-    <RecommendedDishes />
+      <div className='mb-5'>
+        <div className="pb-6 pt-6 px-4 md:px-8">
+          <h1 className='text-center text-xl md:text-3xl lg:text-4xl text-[#00544f] font-semibold'>Recommended Dishes</h1>
+        </div>
+        <Marquee>
+          <div className="flex gap-3 py-3 ml-5 mr-3 overflow-hidden">
+            {RecommendedData.map((dish, index) => (
+              <Flip key={index} cascade left>
+                <animated.div style={fadeIn} className="flex-grow h-full">
+                  <Card2 key={index} title={dish.dishName} time={dish.time} rating={dish.rating} imageUrl={dish.dishImage} />
+                </animated.div>
+              </Flip>
+            ))}
+          </div>
+        </Marquee>
+    </div>
+    <Footer />
 </div>
 );
 }

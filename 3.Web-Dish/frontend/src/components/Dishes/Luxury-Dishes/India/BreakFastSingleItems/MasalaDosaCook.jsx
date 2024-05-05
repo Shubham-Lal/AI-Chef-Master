@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { Fade } from "react-reveal";
  import Cooking from "../../../../../pages/Cooking";
 import IngredientCard from "../../../../IngredientCard";
-
- const recipeSteps = [
+ import { Link } from "react-router-dom";
+  const recipeSteps = [
   {
     title: "Soak Ingredients",
     videoSource: "./hls/Soak_Ingredients1.mp4",
@@ -182,7 +182,7 @@ import IngredientCard from "../../../../IngredientCard";
 
 function RecipeSteps({ steps }) {
   const [currentStep, setCurrentStep] = useState(0);
-
+ 
   const goToNextStep = () => {
     setCurrentStep(currentStep + 1);
   };
@@ -191,9 +191,15 @@ function RecipeSteps({ steps }) {
     setCurrentStep(currentStep - 1);
   };
 
-  const isLastStep = currentStep === steps.length - 1;
+   const isLastStep = currentStep === steps.length - 1;
   const isFirstStep = currentStep === 0;
+  const [showAlert, setShowAlert] = useState(false);
 
+  const handleFeedbackSubmission = () => {
+    alert('You have successfully created a dish!');
+  };
+
+ 
   return (
     <div className="px-4 py-8 bg-[#f7f3cd] shadow-lg rounded-lg">
       <h1 className="text-4xl font-semibold text-center mb-8">Preparation Steps</h1>
@@ -231,11 +237,20 @@ function RecipeSteps({ steps }) {
           <span>of</span>
           <span className="ml-2">{steps.length}</span>
         </div>
-        <button onClick={goToNextStep} disabled={isLastStep} className="px-4 py-2 bg-blue-500 text-white rounded-md disabled:bg-gray-300 disabled:cursor-not-allowed" aria-label="Next Step">
-          {isLastStep ? "Last Step" : "Next Step"}
-        </button>
+        {isLastStep ? (
+          <Link to='/feedback'>
+            <button onClick={handleFeedbackSubmission}  className="px-4 py-2 bg-green-500 text-white rounded-md" aria-label="Submit Feedback">
+             Submit Feedback
+          </button>
+          </Link>
+        ) : (
+          <button onClick={goToNextStep} disabled={isLastStep} className="px-4 py-2 bg-blue-500 text-white rounded-md disabled:bg-gray-300 disabled:cursor-not-allowed" aria-label="Next Step">
+            {isLastStep ? "Last Step" : "Next Step"}
+          </button>
+        )}
       </div>
-    </div>
+  
+      </div>
   );
 }
 
@@ -245,7 +260,7 @@ function RecipeSteps({ steps }) {
       <div className="flex-1 max-w-4xl mx-auto py-8">
         <h1 className="text-4xl font-semibold text-center mb-8">Masala Dosa Recipe</h1>
         <RecipeSteps steps={recipeSteps} />
-      </div>
+       </div>
     </div>
   );
 }

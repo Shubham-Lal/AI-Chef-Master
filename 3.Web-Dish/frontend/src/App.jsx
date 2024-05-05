@@ -75,6 +75,7 @@ import Desert from './components/Choices/CulinaryCategories/Desert';
 import Soup from './components/Choices/CulinaryCategories/Soup';
 import Bakery from './components/Choices/CulinaryCategories/Bakery';
 import Settings from './components/Settings';
+import Modal from './components/Modal';
 
 const App = () => {
     // const { user } = useAuthContext(); console.log(user);
@@ -158,6 +159,7 @@ const App = () => {
                 <Route path='/Soup' element={<Soup />} />
                 <Route path='/Bakery' element={<Bakery />} />
                 <Route path='/Settings' element={<Settings />} />
+                <Route path='/feedback' element={<Modal />} />
             </Routes>
         </BrowserRouter>
     );

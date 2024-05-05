@@ -1,6 +1,6 @@
 import Typewriter from "../components/Typewriter";
 import { archived } from "../data/archivedData";
-import Card from "./Card";
+import Card2 from "../../Card2";
 
 export default function Archives({ lightMode }) {
     return (
@@ -12,7 +12,7 @@ export default function Archives({ lightMode }) {
 
             <div className="mt-2 mb-4 flex flex-wrap justify-center gap-4">
                 {archived.map((item, i) => (
-                    <Card
+                    <Card2
                         key={i}
                         title={item.dishName}
                         imageUrl={item.dishImage}
@@ -22,6 +22,7 @@ export default function Archives({ lightMode }) {
                     />
                 ))}
             </div>
+            
         </div>
     );
 }
