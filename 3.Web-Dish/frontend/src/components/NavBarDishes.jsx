@@ -6,7 +6,7 @@ export default function NavBarDishes() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [categoriesToShow, setCategoriesToShow] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [categoriesPerPage, setCategoriesPerPage] = useState(3);  
+  const [categoriesPerPage, setCategoriesPerPage] = useState(3);
 
   const categories = [
     { path: "/All-Indian-Dishes", label: "Indian Dishes" },
@@ -28,7 +28,7 @@ export default function NavBarDishes() {
       setCategoriesPerPage(perPage);
     };
 
-    handleResize();  
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -37,7 +37,7 @@ export default function NavBarDishes() {
     const startIndex = currentIndex * categoriesPerPage;
     const endIndex = startIndex + categoriesPerPage;
     setCategoriesToShow(categories.slice(startIndex, endIndex));
-  }, [currentIndex, categories, categoriesPerPage]);
+  }, [currentIndex, categoriesPerPage]);
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
@@ -56,7 +56,7 @@ export default function NavBarDishes() {
       <div className="flex items-center justify-between w-full max-w-6xl">
         <div>
           {currentIndex !== 0 && categories.length > categoriesPerPage && (
-            <button className="flex items-center justify-center w-10 h-[9vh] bg-emerald-600 hover:bg-emerald-700 focus:outline-none shadow-md transition duration-300 ease-in-out" onClick={handlePrevPage}>
+            <button className="flex items-center justify-center w-10 h-[64px] bg-emerald-600 hover:bg-emerald-700 focus:outline-none shadow-md transition duration-300 ease-in-out" onClick={handlePrevPage}>
               <BsChevronLeft className="w-8 h-8 text-white" />
             </button>
           )}
@@ -80,7 +80,7 @@ export default function NavBarDishes() {
         <div>
           {currentIndex !== Math.ceil(categories.length / categoriesPerPage) - 1 && categories.length > categoriesPerPage && (
             <button 
-              className="flex items-center justify-center w-10 h-[9vh] bg-emerald-600 hover:bg-emerald-700 focus:outline-none shadow-md transition duration-300 ease-in-out"
+              className="flex items-center justify-center w-10 h-[64px] bg-emerald-600 hover:bg-emerald-700 focus:outline-none shadow-md transition duration-300 ease-in-out"
               onClick={handleNextPage}
             >
               <BsChevronRight className="w-6 h-full text-white" />
