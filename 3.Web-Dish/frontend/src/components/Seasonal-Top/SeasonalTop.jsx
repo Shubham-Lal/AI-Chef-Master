@@ -1,6 +1,6 @@
 import React from 'react';
 import Card2 from '../Card2';
-import SeasonalDishesData from '../../Data/Seasonal-Top-Dishes/SeasonalDishesData';
+// import SeasonalDishesData from '../../Data/Seasonal-Top-Dishes/SeasonalDishesData';
 import TopDishesData from '../../Data/Seasonal-Top-Dishes/TopDishesData';
 import 'animate.css/animate.min.css';
 import Marquee from 'react-fast-marquee';
@@ -31,23 +31,27 @@ const SeasonalTop = () => {
           </button>
         </div>
       </div>
-      <Marquee>
-        <div className="flex gap-3 py-3 ml-5 mr-3 overflow-hidden" >
-          {!loading && dishes.map((dish, index) => (
-            <Flip key={index} cascade left>
-              <animated.div style={fadeIn} className="flex-grow h-full">
-                <Card2
-                  key={index}
-                  title={dish.dish_name}
-                  time={dish.cooking_time}
-                  rating={0}
-                  imageUrl='https://playswellwithbutter.com/wp-content/uploads/2021/04/Grilled-Bell-Peppers-6-960x1440.jpg'
-                />
-              </animated.div>
-            </Flip>
-          ))}
-        </div>
-      </Marquee>
+      {loading ? (
+        <h3>Fetching...</h3>
+      ) : (
+        <Marquee>
+          <div className="flex gap-3 py-3 ml-5 mr-3 overflow-hidden" >
+            {dishes.map((dish, index) => (
+              <Flip key={index} cascade left>
+                <animated.div style={fadeIn} className="flex-grow h-full">
+                  <Card2
+                    key={index}
+                    title={dish.dish_name}
+                    time={dish.cooking_time}
+                    rating={0}
+                    imageUrl='https://playswellwithbutter.com/wp-content/uploads/2021/04/Grilled-Bell-Peppers-6-960x1440.jpg'
+                  />
+                </animated.div>
+              </Flip>
+            ))}
+          </div>
+        </Marquee>
+      )}
 
       {/* TOP DISHES */}
       <div className="pb-6 pt-6 flex justify-between px-4 md:px-8">
