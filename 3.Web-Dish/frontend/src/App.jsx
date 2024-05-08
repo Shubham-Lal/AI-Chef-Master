@@ -8,11 +8,12 @@ import NavBarHeader from './components/NavBarHeader';
 import Home from './pages/Home';
 import SingleDish from './pages/SingleDish';
 import Cooking from './pages/Cooking';
+import TeamPage from './pages/TeamPage';
 import CreateAccount from './components/LoginSineupPage/CreateAccount';
 import LoginIn from './components/LoginSineupPage/LoginIn';
 
 import ChefIntelligence from './components/ChefIntelligence';
-import TeamPage from './pages/TeamPage';
+import SeasonalDishes from './components/Seasonal-Top/SeasonalDishes';
 import LuxuryDishes from './components/Dishes/Luxury-Dishes/LuxuryDishes';
 import Spanish from './components/Dishes/Luxury-Dishes/Spain/Spanish';
 import SpanishLuxuryBreakFast from './components/Dishes/Luxury-Dishes/Spain/SpanishLuxuryBreakFast';
@@ -66,7 +67,6 @@ import GlutenFreeSeeMore from './components/Dishes/Healthy-Dishes/Gluten-Free/Gl
 import KetoSeeMore from './components/Dishes/Healthy-Dishes/Keto/KetoSeeMore';
 import SugarFreeSeeMore from './components/Dishes/Healthy-Dishes/Sugar-Free/SugarFreeSeeMore';
 import VegetablesSeeMore from './components/Dishes/Healthy-Dishes/Vegetables/VegetablesSeeMore';
-import SeasonalDishes from './components/Seasonal-Top/SeasonalDishes';
 import TopDishes from './components/Seasonal-Top/TopDishes';
 import CulinaryCategories from './components/Choices/CulinaryCategories/CulinaryCategories';
 import Beverages from './components/Choices/CulinaryCategories/Beverages';
@@ -96,6 +96,8 @@ const App = () => {
                 <Route path='/signup' element={<CreateAccount />} />
                 <Route path='/login' element={<LoginIn />} />
                 <Route path='chef-intelligence/*' element={<ChefIntelligence />} />
+
+                <Route path='/SeasonalDishes' element={<SeasonalDishes />} />
                 <Route path='/Luxury-Dishes' element={<LuxuryDishes />} />
                 <Route path='/Luxury-Dishes/Spanish' element={<Spanish />} />
                 <Route path='/Luxury-Dishes/Spanish/SpanishLuxuryBreakFast' element={<SpanishLuxuryBreakFast />} />
@@ -150,7 +152,6 @@ const App = () => {
                 <Route path='/upgrade-premium' element={<UpgradePremium />} />
                 <Route path='/saved-menu' element={<SavedMenu />} />
                 <Route path='/RecommandedQuickDishes' element={<RecommendedQuickDishes />} />
-                <Route path='/SeasonalDishes' element={<SeasonalDishes />} />
                 <Route path='/TopDishes' element={<TopDishes />} />
                 <Route path='/CulinaryCategories' element={<CulinaryCategories />} />
                 <Route path='/Beverages' element={<Beverages />} />

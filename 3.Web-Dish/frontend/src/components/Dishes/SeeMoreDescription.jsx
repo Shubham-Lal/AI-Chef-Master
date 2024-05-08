@@ -65,8 +65,7 @@ function SeeMoreDescription({ slideDishes }) {
             <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
              <img
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 transform scale-100 hover:scale-110"
-              src='https://playswellwithbutter.com/wp-content/uploads/2021/04/Grilled-Bell-Peppers-6-960x1440.jpg'
-              // src={dish.dishImage}  
+              src={dish.image || 'https://playswellwithbutter.com/wp-content/uploads/2021/04/Grilled-Bell-Peppers-6-960x1440.jpg'}  
               alt={dish.dish_name}
               // alt={dish.dishName}  
             />

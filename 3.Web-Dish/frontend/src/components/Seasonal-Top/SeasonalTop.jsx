@@ -44,7 +44,7 @@ const SeasonalTop = () => {
                     title={dish.dish_name}
                     time={dish.cooking_time}
                     rating={0}
-                    imageUrl='https://playswellwithbutter.com/wp-content/uploads/2021/04/Grilled-Bell-Peppers-6-960x1440.jpg'
+                    imageUrl={dish.image || 'https://playswellwithbutter.com/wp-content/uploads/2021/04/Grilled-Bell-Peppers-6-960x1440.jpg'}
                   />
                 </animated.div>
               </Flip>
