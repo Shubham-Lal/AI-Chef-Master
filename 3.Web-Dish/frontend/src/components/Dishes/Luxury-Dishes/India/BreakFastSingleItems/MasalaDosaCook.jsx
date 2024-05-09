@@ -1,10 +1,11 @@
 // Import React and necessary components
 import React, { useState } from "react";
 import { Fade } from "react-reveal";
- import Cooking from "../../../../../pages/Cooking";
+import Cooking from "../../../../../pages/Cooking";
 import IngredientCard from "../../../../IngredientCard";
- import { Link } from "react-router-dom";
-  const recipeSteps = [
+import { Link } from "react-router-dom";
+
+const recipeSteps = [
   {
     title: "Soak Ingredients",
     videoSource: "./hls/Soak_Ingredients1.mp4",
@@ -52,7 +53,7 @@ import IngredientCard from "../../../../IngredientCard";
       "Let the batter ferment for at least 8 hours or overnight in a warm place"
     ],
     "ingredients": [
-        { "title": "Batter 🥞", "quantity": "as needed" }
+      { "title": "Batter 🥞", "quantity": "as needed" }
     ]
   },
   {
@@ -76,11 +77,11 @@ import IngredientCard from "../../../../IngredientCard";
       "Sauté until onions turn translucent."
     ],
     "ingredients": [
-        { "title": "Asafoetida 😊", "quantity": "as needed" },
-        { "title": "Curry Leaves 🍃", "quantity": "as needed" },
-        { "title": "Onions, chopped 🧅", "quantity": "as needed" },
-        { "title": "Green Chilies, chopped 🌶️", "quantity": "as needed" }
-      ]
+      { "title": "Asafoetida 😊", "quantity": "as needed" },
+      { "title": "Curry Leaves 🍃", "quantity": "as needed" },
+      { "title": "Onions, chopped 🧅", "quantity": "as needed" },
+      { "title": "Green Chilies, chopped 🌶️", "quantity": "as needed" }
+    ]
   },
   {
     "title": "Spices and Vegetables",
@@ -93,96 +94,96 @@ import IngredientCard from "../../../../IngredientCard";
       "Cook for a few minutes to allow flavors to meld"
     ],
     "ingredients": [
-        { "title": "Turmeric Powder", "quantity": "as needed" },
-        { "title": "Boiled and Mashed Potatoes 🥔", "quantity": "as needed" },
-        { "title": "Salt 🧂", "quantity": "to taste" }
+      { "title": "Turmeric Powder", "quantity": "as needed" },
+      { "title": "Boiled and Mashed Potatoes 🥔", "quantity": "as needed" },
+      { "title": "Salt 🧂", "quantity": "to taste" }
     ]
   },
-{
-  title: "Garnish and Set Aside",
-  videoSource: "./hls/Garnish and Set Aside.mp4",
-  instructions: [
-    "Garnish the mixture with chopped coriander leaves.",
-    "Set the filling aside for later use.",
-    "Add mustard seeds and cumin seeds to the hot oil, and let them splutter."
-  ],
-  ingredients: [
-    { title: "Oil 🍶", quantity: "2 tablespoons" },
-    { title: "Mustard Seeds 🌼", quantity: "1 teaspoon" },
-    { title: "Cumin Seeds 🌿", quantity: "1 teaspoon" },
-    { title: "Chopped Coriander Leaves 🌿", quantity: "as needed" }
-  ]
-},
-{
-  title: "Preheat Tawa",
-  videoSource: "./hls/Preheat Tawa.mp4",
-  instructions: [
-    "Heat a non-stick dosa tawa or skillet on medium heat until hot."
-  ],
-  ingredients: [
-    { title: "Non-stick Dosa Tawa or Skillet 🍳", quantity: "1 Dosa Tawa" }
-  ]
-},
-{
-  title: "Add Batter to Tawa",
-  videoSource: "./hls/Batter to Tawa.mp4",
-  instructions: [
-    "Pour a ladleful of dosa batter onto the center of the tawa.",
-    "Spread the batter in a circular motion to form a thin pancake."
-  ],
-  ingredients: [
-    { title: "Dosa Batter 🥞", quantity: "as needed" }
-  ]
-},
-{
-  title: "Cook the Dosa",
-  videoSource: "./hls/Cook the Dosa.mp4",
-  instructions: [
-    "Drizzle some oil or ghee around the edges of the dosa.",
-    "Cook until the bottom turns golden brown and crisp."
-  ],
-  ingredients: [
-    { title: "Oil or Ghee 🍯", quantity: "as needed" }
-  ]
-},
-{
-  title: "Flip and Cook the Other Side",
-  videoSource: "./hls/Flip and Cook the Other Side.mp4",
-  instructions: [
-    "Flip the dosa and cook the other side for a minute or until it’s fully cooked."
-  ],
-  ingredients: [
-    { title: "Oil or Ghee 🍯", quantity: "as needed" }
-  ]
-},
-{
-  title: "Add Potato Masala",
-  videoSource: "./hls/Potato Masala.mp4",
-  instructions: [
-    "Place a spoonful of the prepared potato masala in the center of the dosa.",
-    "Fold the dosa over the filling."
-  ],
-  ingredients: [
-    { title: "Prepared Potato Masala 🥔", quantity: "as needed" }
-  ]
-},
-{
-  title: "Serve Hot",
-  videoSource: "./hls/Serve Hot.mp4",
-  instructions: [
-    "Serve the masala dosa hot.",
-    "Pair with coconut chutney, sambar, or any other side dish of your choice."
-  ],
-  ingredients: [
-    { title: "Coconut Chutney 🥥", quantity: "as needed" },
-    { title: "Sambar 🍲", quantity: "as needed" }
-  ]
-}
+  {
+    title: "Garnish and Set Aside",
+    videoSource: "./hls/Garnish and Set Aside.mp4",
+    instructions: [
+      "Garnish the mixture with chopped coriander leaves.",
+      "Set the filling aside for later use.",
+      "Add mustard seeds and cumin seeds to the hot oil, and let them splutter."
+    ],
+    ingredients: [
+      { title: "Oil 🍶", quantity: "2 tablespoons" },
+      { title: "Mustard Seeds 🌼", quantity: "1 teaspoon" },
+      { title: "Cumin Seeds 🌿", quantity: "1 teaspoon" },
+      { title: "Chopped Coriander Leaves 🌿", quantity: "as needed" }
+    ]
+  },
+  {
+    title: "Preheat Tawa",
+    videoSource: "./hls/Preheat Tawa.mp4",
+    instructions: [
+      "Heat a non-stick dosa tawa or skillet on medium heat until hot."
+    ],
+    ingredients: [
+      { title: "Non-stick Dosa Tawa or Skillet 🍳", quantity: "1 Dosa Tawa" }
+    ]
+  },
+  {
+    title: "Add Batter to Tawa",
+    videoSource: "./hls/Batter to Tawa.mp4",
+    instructions: [
+      "Pour a ladleful of dosa batter onto the center of the tawa.",
+      "Spread the batter in a circular motion to form a thin pancake."
+    ],
+    ingredients: [
+      { title: "Dosa Batter 🥞", quantity: "as needed" }
+    ]
+  },
+  {
+    title: "Cook the Dosa",
+    videoSource: "./hls/Cook the Dosa.mp4",
+    instructions: [
+      "Drizzle some oil or ghee around the edges of the dosa.",
+      "Cook until the bottom turns golden brown and crisp."
+    ],
+    ingredients: [
+      { title: "Oil or Ghee 🍯", quantity: "as needed" }
+    ]
+  },
+  {
+    title: "Flip and Cook the Other Side",
+    videoSource: "./hls/Flip and Cook the Other Side.mp4",
+    instructions: [
+      "Flip the dosa and cook the other side for a minute or until it’s fully cooked."
+    ],
+    ingredients: [
+      { title: "Oil or Ghee 🍯", quantity: "as needed" }
+    ]
+  },
+  {
+    title: "Add Potato Masala",
+    videoSource: "./hls/Potato Masala.mp4",
+    instructions: [
+      "Place a spoonful of the prepared potato masala in the center of the dosa.",
+      "Fold the dosa over the filling."
+    ],
+    ingredients: [
+      { title: "Prepared Potato Masala 🥔", quantity: "as needed" }
+    ]
+  },
+  {
+    title: "Serve Hot",
+    videoSource: "./hls/Serve Hot.mp4",
+    instructions: [
+      "Serve the masala dosa hot.",
+      "Pair with coconut chutney, sambar, or any other side dish of your choice."
+    ],
+    ingredients: [
+      { title: "Coconut Chutney 🥥", quantity: "as needed" },
+      { title: "Sambar 🍲", quantity: "as needed" }
+    ]
+  }
 ];
 
 function RecipeSteps({ steps }) {
   const [currentStep, setCurrentStep] = useState(0);
- 
+
   const goToNextStep = () => {
     setCurrentStep(currentStep + 1);
   };
@@ -191,7 +192,7 @@ function RecipeSteps({ steps }) {
     setCurrentStep(currentStep - 1);
   };
 
-   const isLastStep = currentStep === steps.length - 1;
+  const isLastStep = currentStep === steps.length - 1;
   const isFirstStep = currentStep === 0;
   const [showAlert, setShowAlert] = useState(false);
 
@@ -199,7 +200,7 @@ function RecipeSteps({ steps }) {
     alert('You have successfully created a dish!');
   };
 
- 
+
   return (
     <div className="px-4 py-8 bg-[#f7f3cd] shadow-lg rounded-lg">
       <h1 className="text-4xl font-semibold text-center mb-8">Preparation Steps</h1>
@@ -239,9 +240,9 @@ function RecipeSteps({ steps }) {
         </div>
         {isLastStep ? (
           <Link to='/feedback'>
-            <button onClick={handleFeedbackSubmission}  className="px-4 py-2 bg-green-500 text-white rounded-md" aria-label="Submit Feedback">
-             Submit Feedback
-          </button>
+            <button onClick={handleFeedbackSubmission} className="px-4 py-2 bg-green-500 text-white rounded-md" aria-label="Submit Feedback">
+              Submit Feedback
+            </button>
           </Link>
         ) : (
           <button onClick={goToNextStep} disabled={isLastStep} className="px-4 py-2 bg-blue-500 text-white rounded-md disabled:bg-gray-300 disabled:cursor-not-allowed" aria-label="Next Step">
@@ -249,18 +250,18 @@ function RecipeSteps({ steps }) {
           </button>
         )}
       </div>
-  
-      </div>
+
+    </div>
   );
 }
 
- function MasalaDosaCook() {
+function MasalaDosaCook() {
   return (
     <div className="bg-[#f7f3cd] min-h-screen flex flex-col justify-center">
       <div className="flex-1 max-w-4xl mx-auto py-8">
         <h1 className="text-4xl font-semibold text-center mb-8">Masala Dosa Recipe</h1>
         <RecipeSteps steps={recipeSteps} />
-       </div>
+      </div>
     </div>
   );
 }

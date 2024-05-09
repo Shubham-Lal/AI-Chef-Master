@@ -17,7 +17,7 @@ function SeeMoreDishes({ searchTerm, setSearchTerm, filteredDish }) {
             <div key={index} className="">
               <Card2
                 title={dish.dish_name}
-                // dishPath={dish.dishPath}
+                dishPath={`/dish/${dish.dish_name}`}
                 imageUrl={dish.image || 'https://playswellwithbutter.com/wp-content/uploads/2021/04/Grilled-Bell-Peppers-6-960x1440.jpg'}
                 time={dish.cooking_time}
                 rating={0}

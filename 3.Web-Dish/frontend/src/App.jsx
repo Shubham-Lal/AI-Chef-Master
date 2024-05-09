@@ -5,15 +5,19 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LocationListener from "./hooks/LocationListener";
 import NavBarHeader from './components/NavBarHeader';
 
+
 import Home from './pages/Home';
 import SingleDish from './pages/SingleDish';
 import Cooking from './pages/Cooking';
 import TeamPage from './pages/TeamPage';
 import CreateAccount from './components/LoginSineupPage/CreateAccount';
 import LoginIn from './components/LoginSineupPage/LoginIn';
-
 import ChefIntelligence from './components/ChefIntelligence';
+
 import SeasonalDishes from './components/Seasonal-Top/SeasonalDishes';
+import DishPage from './pages/DishPage';
+import Modal from './components/Modal';
+
 import LuxuryDishes from './components/Dishes/Luxury-Dishes/LuxuryDishes';
 import Spanish from './components/Dishes/Luxury-Dishes/Spain/Spanish';
 import SpanishLuxuryBreakFast from './components/Dishes/Luxury-Dishes/Spain/SpanishLuxuryBreakFast';
@@ -75,10 +79,10 @@ import Desert from './components/Choices/CulinaryCategories/Desert';
 import Soup from './components/Choices/CulinaryCategories/Soup';
 import Bakery from './components/Choices/CulinaryCategories/Bakery';
 import Settings from './components/Settings';
-import Modal from './components/Modal';
+import NotFound from './pages/NotFound';
 
 const App = () => {
-    // const { user } = useAuthContext(); console.log(user);
+    // const { user } = useAuthContext();
     const [location, setLocation] = useState({ pathname: '' });
 
     return (
@@ -98,6 +102,9 @@ const App = () => {
                 <Route path='chef-intelligence/*' element={<ChefIntelligence />} />
 
                 <Route path='/SeasonalDishes' element={<SeasonalDishes />} />
+                <Route path="/dish/:dishName" element={<DishPage />} />
+                <Route path='/feedback' element={<Modal />} />
+
                 <Route path='/Luxury-Dishes' element={<LuxuryDishes />} />
                 <Route path='/Luxury-Dishes/Spanish' element={<Spanish />} />
                 <Route path='/Luxury-Dishes/Spanish/SpanishLuxuryBreakFast' element={<SpanishLuxuryBreakFast />} />
@@ -160,7 +167,7 @@ const App = () => {
                 <Route path='/Soup' element={<Soup />} />
                 <Route path='/Bakery' element={<Bakery />} />
                 <Route path='/Settings' element={<Settings />} />
-                <Route path='/feedback' element={<Modal />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
     );

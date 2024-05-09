@@ -23,15 +23,12 @@ const Login = ({ isAuthenticated }) => {
         `${"http://localhost:8000/auth/social/o/google-oauth2/?redirect_uri=http://localhost:5173/login/"}`
       );
       window.location.replace(res.data.authorization_url);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) { }
   };
 
   const dataFetch = async (code, state) => {
-    console.log("dataFetch");
     const encodedCode = encodeURIComponent(code);
-const encodedState = encodeURIComponent(state);
+    const encodedState = encodeURIComponent(state);
 
     const url = `http://localhost:8000/auth/social/o/google-oauth2/?state=${encodedState}&code=${encodedCode}`;
 
@@ -49,9 +46,8 @@ const encodedState = encodeURIComponent(state);
 
       if (response.status === 200) {
         const res = await response.json();
-        console.log(res);
       } else {
-        console.error("http error",response);
+        console.error("http error", response);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -63,8 +59,6 @@ const encodedState = encodeURIComponent(state);
     const code = params.get("code");
     const state = params.get("state");
 
-    console.log(state);
-    console.log(code);
     dataFetch(code, state);
   }, [window.location.search, navigate]);
 

@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify,url_for,redirect,session,render_template
 from pymongo import MongoClient
+from pymongo.errors import PyMongoError
 from flask_jwt_extended import create_access_token ,jwt_required ,create_refresh_token ,JWTManager,get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS,cross_origin
@@ -253,6 +254,23 @@ def get_dishes():
         dishes_list.append(dish)
     
     return jsonify(dishes_list), 201
+
+@app.route('/dish', methods=['POST'])
+def get_dish():
+    try:
+        dish_name = request.json.get('dish_name')
+        if not dish_name:
+            return jsonify({"error": "Missing dish_name in request body"}), 400
+
+        dish = db['Dish'].find_one({"dish_name": dish_name})
+        if dish:
+            dish['_id'] = str(dish['_id'])
+            return jsonify(dish), 200
+        else:
+            return jsonify({"error": "Dish not found"}), 404
+    except PyMongoError as e:
+        print(f"An error occurred: {e}")
+        return jsonify({"error": "An error occurred while fetching the dish"}), 500
 
 # app.config['UPLOAD_FOLDER'] = 'files'
 @app.route('/career' ,methods = ['POST'])

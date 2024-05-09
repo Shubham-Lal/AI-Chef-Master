@@ -13,7 +13,9 @@ export default function Home({ lightMode }) {
     const colors = lightMode ? lightColors : darkColors;
     let userData;
     try { userData = JSON.parse(localStorage.getItem('user')); }
-    catch (error) { userData = {}; console.log(error); }
+    catch (error) {
+        userData = {};
+    }
 
     // const [openOverview, setOpenOverview] = useState(false);
 

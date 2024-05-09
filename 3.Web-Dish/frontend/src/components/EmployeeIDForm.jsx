@@ -10,7 +10,6 @@ const EmployeeIDForm = () => {
 
     const handleSubmit = async(e)=>{
         e.preventDefault();
-        console.log("Employee ID", ID);
         
       
           const response = await fetch(`/team/employee/${ID}`, {
@@ -29,7 +28,6 @@ const EmployeeIDForm = () => {
               setID('');
               setEmployee(json)
               setError("An error occured");
-              console.log(employee)
           }
     }
 
