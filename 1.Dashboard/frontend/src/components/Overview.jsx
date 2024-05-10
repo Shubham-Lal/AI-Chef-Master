@@ -1,4 +1,4 @@
-import { BiDish } from "react-icons/bi";
+import { BiDish, BiFoodTag } from "react-icons/bi";
 
 const Overview = ({ form, color, value, open, setOpen, page }) => {
   return (
@@ -28,7 +28,10 @@ const Overview = ({ form, color, value, open, setOpen, page }) => {
           <p className="p-1  py-2 font-semibold lg:text-xl">
             Veg or Non-veg -{" "}
           </p>
-          <span className="text-lg ">{form.veg_non_veg}</span>
+          <div className="flex items-center gap-1">
+            <span className="text-lg ">{form.veg_non_veg}</span>
+            <BiFoodTag size={22} color={`${form.veg_non_veg === "vegetarian" || form.veg_non_veg === "Vegetarian" ? "rgb(16 185 129)" : "rgb(244 63 94)"}`} />
+          </div>
         </div>
         {form.popularity_state && (
           <div className="flex items-center gap-4 border-b border-zinc-500">
