@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LocationListener from "./hooks/LocationListener";
 import NavBarHeader from './components/NavBarHeader';
 
-
 import Home from './pages/Home';
 import SingleDish from './pages/SingleDish';
 import Cooking from './pages/Cooking';
@@ -16,7 +15,7 @@ import ChefIntelligence from './components/ChefIntelligence';
 
 import SeasonalDishes from './components/Seasonal-Top/SeasonalDishes';
 import DishPage from './pages/DishPage';
-import Modal from './components/Modal';
+import FeedbackForm from './components/FeedbackForm';
 
 import LuxuryDishes from './components/Dishes/Luxury-Dishes/LuxuryDishes';
 import Spanish from './components/Dishes/Luxury-Dishes/Spain/Spanish';
@@ -103,7 +102,7 @@ const App = () => {
 
                 <Route path='/SeasonalDishes' element={<SeasonalDishes />} />
                 <Route path="/dish/:dishName" element={<DishPage />} />
-                <Route path='/feedback' element={<Modal />} />
+                <Route path='/feedback' element={<FeedbackForm />} />
 
                 <Route path='/Luxury-Dishes' element={<LuxuryDishes />} />
                 <Route path='/Luxury-Dishes/Spanish' element={<Spanish />} />

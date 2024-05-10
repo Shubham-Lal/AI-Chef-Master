@@ -10,9 +10,9 @@ export default function Archives({ lightMode }) {
 
             <h2 className="mb-2 text-3xl md:text-4xl font-semibold">Archived Recipes</h2>
 
-            <div className="mt-2 mb-4 flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap gap-3 justify-center">
                 {archived.map((item, i) => (
-                    <Card2
+                    <Card2 
                         key={i}
                         title={item.dishName}
                         imageUrl={item.dishImage}

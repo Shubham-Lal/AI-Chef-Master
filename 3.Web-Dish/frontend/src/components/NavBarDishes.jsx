@@ -56,7 +56,7 @@ export default function NavBarDishes() {
       <div className="flex items-center justify-between w-full max-w-6xl">
         <div>
           {currentIndex !== 0 && categories.length > categoriesPerPage && (
-            <button className="flex items-center justify-center w-10 h-[64px] bg-emerald-600 hover:bg-emerald-700 focus:outline-none shadow-md transition duration-300 ease-in-out" onClick={handlePrevPage}>
+            <button className="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 focus:outline-none shadow-md transition duration-300 ease-in-out" onClick={handlePrevPage}>
               <BsChevronLeft className="w-8 h-8 text-white" />
             </button>
           )}
@@ -66,9 +66,9 @@ export default function NavBarDishes() {
             <Link
               key={path}
               to={path}
-              className={`px-3 py-2 rounded-md bg-[#f7f3cd] shadow-lg transition-colors duration-300 ${
+              className={`px-3 py-2 text-center leading-4 bg-[#f7f3cd] shadow-lg transition-colors duration-300 ${
                 selectedCategory === label ? " text-gray-900  " : "  hover:bg-emerald-700 hover:text-white"
-              } md:text-lg md:rounded-lg`}
+              } md:text-lg rounded-full`}
               onClick={() => handleCategoryClick(label)}
               target={external ? "_blank" : ""}
               style={{ textDecoration: 'none' }}
@@ -80,7 +80,7 @@ export default function NavBarDishes() {
         <div>
           {currentIndex !== Math.ceil(categories.length / categoriesPerPage) - 1 && categories.length > categoriesPerPage && (
             <button 
-              className="flex items-center justify-center w-10 h-[64px] bg-emerald-600 hover:bg-emerald-700 focus:outline-none shadow-md transition duration-300 ease-in-out"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 focus:outline-none shadow-md transition duration-300 ease-in-out"
               onClick={handleNextPage}
             >
               <BsChevronRight className="w-6 h-full text-white" />
