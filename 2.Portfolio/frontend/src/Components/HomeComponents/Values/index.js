@@ -7,6 +7,7 @@ import "tailwindcss/tailwind.css";
 import Graph from "../../Images/graph.png";
 import Focus from "../../Images/focus.png";
 import Customer from "../../Images/customer.png";
+import { ChefCard1 } from "../Pocket";
 
 const AnimatedCard = ({ imageUrl, imageAlt, header, description }) => {
   return (
@@ -69,12 +70,16 @@ const Values = () => {
         Create and customize your favorite AI CHEF
       </p>
 
-      <div className="grid grid-cols-1 gap-[25px] items-center">
-        {CardList.map((card) => (
-          <AnimatedCard key={uuidv4()} {...card} />
-        ))}
-      </div>
-    </div>
+
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4 "> 
+
+  <ChefCard1 key={uuidv4()} heading={"Long term Growth"} description={"Elevate your cooking into a tailored and engaging adventure. This feature directs users in creating delightful dishes by enabling customization of quantities and ingredients, unfolding the recipe seamlessly through a blend of audio, text, and video to enhance the culinary journey. For more details on how this feature can transform your cooking experience and unlock a world of possibilities in the kitchen."} video={"assets/video_1.mp4"}link={"/Growth"} />
+  <ChefCard1 key={uuidv4()} heading={"Customer priorities"} description={"The AI Chef Master also offers a Nutrition Manager, catering to gym enthusiasts and fitness aficionados. This feature allows you to monitor your dietary intake, keeping track of what you consume and understanding how different foods can impact your body and overall well-being. Stay on top of your nutritional goals with precision and make informed choices for a healthier lifestyle."} video={"assets/1.mp4"} link={"/Priorities"}/>
+  <ChefCard1 key={uuidv4()} heading={"Focus on R&D"} description={"Convert your leftover ingredients into culinary delights effortlessly. Users simply input their available ingredients, and the module generates a curated list of diverse dishes. Once a choice is made, users receive detailed cooking instructions, empowering them to effortlessly turn their kitchen odds and ends into delicious meals and enjoy your meals with the help of AI Automation."} video={"assets/2.mp4"}  link={"/r&d"}/>
+
+{/* ))} */}
+</div>
+</div>
   );
 };
 

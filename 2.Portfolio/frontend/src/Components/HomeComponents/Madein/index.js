@@ -39,10 +39,10 @@ function Counter({ end, duration, className }) {
 
 function Madein() {
   return (
-    <div className="bg-made-india">
-      <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-10 py-8 md:py-20">
+    <div className="bg-made-india bg-opacity-50">
+      <div className="flex flex-col  md:flex-row items-center justify-between px-6 md:px-10 py-8 md:py-20 bg-white my-1 bg-opacity-5">
         <Fade bottom cascade>
-          <div className="mb-6 md:mb-0 md:w-1/2">
+          <div className="mb-6 md:mb-0 md:w-1/2 bg-opacity-50">
             <h1 className="made-in-india text-4xl md:text-6xl font-extrabold mb-4 md:mb-10">
               <span>Made in India.</span>
               <br />
@@ -51,44 +51,44 @@ function Madein() {
           </div>
         </Fade>
         <div className="md:max-sm-auto">
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="mb-4 md:mb-0 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="mb-4 md:mb-0 text-center border-r-2">
               <Counter
                 end={0}
                 duration={2}
-                className="counter text-4xl md:text-7xl font-bold"
+                className="counter text-2xl md:text-3xl font-bold"
               />
-              <p className="counter-name text-2xl md:text-5xl font-bold">
-                Users Globally
+              <p className="counter-name text-2xl md:text-3xl font-bold">
+                Users
               </p>
             </div>
-            <div className="mb-4 md:mb-0 text-center">
+            <div className="mb-4 md:mb-0 text-center border-r-2">
               <Counter
                 end={10}
                 duration={2}
-                className="counter text-4xl md:text-7xl font-bold"
+                className="counter text-2xl md:text-3xl font-bold"
               />
-              <p className="counter-name text-2xl md:text-5xl font-bold">
+              <p className="counter-name text-xl mr-2 md:text-3xl font-bold">
                 Employees
               </p>
             </div>
-            <div className="mb-4 md:mb-0 text-center">
+            <div className="mb-4 md:mb-0 text-center border-r-2">
               <Counter
                 end={3}
                 duration={2}
-                className="counter text-4xl md:text-7xl font-bold"
+                className="counter text-2xl md:text-3xl font-bold"
               />
-              <p className="counter-name text-2xl md:text-5xl font-bold">
+              <p className="counter-name text-2xl md:text-3xl font-bold">
                 Cities
               </p>
             </div>
-            <div className="mb-4 md:mb-0 text-center">
+            <div className="mb-4 md:mb-0 text-center border-r-2">
               <Counter
                 end={5}
                 duration={2}
-                className="counter text-4xl md:text-7xl font-bold"
+                className="counter text-2xl md:text-3xl font-bold"
               />
-              <p className="counter-name text-2xl md:text-5xl font-bold">
+              <p className="counter-name text-2xl md:text-3xl font-bold">
                 Products
               </p>
             </div>

@@ -10,28 +10,32 @@ import { v4 as uuidv4 } from "uuid";
 import "animate.css";
 const AnimatedCard = ({ imageUrl, imageAlt, heading, description, index }) => {
   return (
-    <div
-      className={`flex flex-col md:flex-row ${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} justify-center items-center w-full gap-8 md:gap-12 mx-auto my-12 px-4 sm:px-6 lg:px-8`}
-    >
-      <Fade right={index % 2 === 0} left={index % 2 !== 0}>
-        <img
-          src={imageUrl}
-          className="w-full h-64 md:h-96 md:w-1/2 rounded-lg shadow-lg"
-          alt={imageAlt}
-        />
-      </Fade>
-      <div className="relative flex flex-col justify-center gap-6 md:gap-12 md:pt-0 items-center max-w-md md:max-w-[400px]">
-        <Slide left={index % 2 === 0} right={index % 2 !== 0}>
-          <h3 className="custom-text text-xl sm:text-lg md:text-2xl lg:text-3xl font-bold text-center md:text-left">
-            {heading}
-          </h3>
-        </Slide>
-        <div className="w-[300px] h-[300px] z-1 rounded-full absolute top-[-25px] blur-3xl bg-[#8bfb451c]" />
-        <Slide left={index % 2 === 0} right={index % 2 !== 0}>
-          <p className="custom-text-secondary text-lg sm:text-lg md:text-xl text-center md:text-left">
-            {description}
-          </p>
-        </Slide>
+    <div>
+      <div
+        className={`flex flex-col mt-6 md:flex-col md:min-h-full mx-2 flex-wrap rounded-2xl bg-white  w-12/12 gap-4 md:gap-6  `}
+      >
+        <Fade>
+          <img
+            src={imageUrl}
+            className="w-full h-64 md:h-96 md:max-w-82 p-2 rounded-2xl shadow-lg"
+            alt={imageAlt}
+          />
+        </Fade>
+        <div className=" flex flex-col  gap-6  md:gap-6 md:pt-0 items-center ">
+          <Slide>
+            <h3 className="custom-text text-xl sm:text-lg md:text-xl lg:text-xl font-bold text-center md:text-left">
+              {heading}
+            </h3>
+          </Slide>
+          <div className=" z-1 rounded-full absolute top-[-25px] blur-3xl bg-[#8bfb451c]" />
+          <Slide>
+            <div>
+              <p className="custom-text-secondary text-lg sm:text-lg mb-3 box-border leading-6 md:text-xl   text-justify p-6">
+                {description}
+              </p>
+            </div>
+          </Slide>
+        </div>
       </div>
     </div>
   );
@@ -53,7 +57,7 @@ const rdSections = [
   {
     heading: "COMMITMENT TO EXCELLENCE:",
     description:
-      "Our dedicated R&D team is committed to delivering unparalleled value, ensuring that our company remains at the forefront of the industry through continuous improvement and a commitment to excellence.",
+      "Our dedicated R&D team is committed to delivering unparalleled value, ensuring that our company remains at the forefront of the industry through continuous improvement.",
     imageUrl: i8,
   },
   {
@@ -86,9 +90,15 @@ const RD = () => {
           </h1>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-30 flex flex-col md:grid md:grid-cols-3 ">
           {rdSections.map((obj, index) => (
-            <AnimatedCard key={uuidv4()} index={index} {...obj} />
+            <>
+              <div className="mt-8">
+                                        <AnimatedCard key={uuidv4()} index={index} {...obj} />
+
+              </div>
+
+            </>
           ))}
         </div>
 

@@ -3,39 +3,39 @@ import { Fade, Slide } from "react-reveal";
 import { v4 as uuidv4 } from "uuid";
 
 import WhatIsInKitchenData from "./Data/WhatIsInKitchenData";
-const AnimatedCard = ({ imageUrl, imageAlt, heading, description1, description2, index }) => {
+const AnimatedCard = ({ imageUrl, imageAlt, heading, description, index }) => {
   return (
-    <div
-      className={`flex flex-col md:flex-row ${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} justify-center items-center w-full gap-8 md:gap-12 mx-auto my-12 px-4 sm:px-6 lg:px-8`}
-    >
-      <Fade right={index % 2 === 0} left={index % 2 !== 0}>
-        <img
-          src={imageUrl}
-          className="w-full h-64 md:h-96 md:w-1/2 rounded-lg shadow-lg"
-          alt={imageAlt}
-        />
-      </Fade>
-      <div className="custom-text  flex flex-col justify-center gap-6 md:gap-12 md:pt-0 items-center max-w-md md:max-w-[400px]">
-        <Slide left={index % 2 === 0} right={index % 2 !== 0}>
-          <h3 className="text-xl sm:text-lg md:text-2xl lg:text-3xl font-bold text-center md:text-left">
-            {heading}
-          </h3>
-        </Slide>
-        <Slide left={index % 2 === 0} right={index % 2 !== 0}>
-          <div className="relative custom-text-secondary">
-            <p className="text-lg sm:text-lg mb-3 box-border leading-6 md:text-xl text-center md:text-left  ">
-              {description1}
-            </p>
-            <div className="w-[300px] h-[300px] z-1 rounded-full absolute top-[-100px] blur-3xl bg-[#8bfb451c]" />
-            <p className="text-lg sm:text-lg leading-6 md:text-xl text-center md:text-left ">
-              {description2}
-            </p>
-          </div>
-        </Slide>
+    <div>
+      <div
+        className={`flex flex-col md:flex-col md:min-h-full mx-2 flex-wrap rounded-2xl bg-white  w-12/12 gap-4 md:gap-2`}
+      >
+        <Fade>
+          <img
+            src={imageUrl}
+            className="w-full h-64 md:h-96 md:max-w-82 p-2 rounded-2xl shadow-lg"
+            alt={imageAlt}
+          />
+        </Fade>
+        <div className="relative flex flex-col justify-center gap-6  md:gap-6 md:pt-0 items-center max-w-md md:max-w-[600px]">
+          <Slide>
+            <h3 className="custom-text text-xl sm:text-3xl md:text-3xl lg:text-3xl font-bold text-center md:text-left">
+              {heading}
+            </h3>
+          </Slide>
+          <div className=" z-1 rounded-full blur-3xl bg-[#8bfb451c]" />
+          <Slide>
+            <div>
+              <p className="custom-text-secondary text-lg sm:text-3xl mb-3 box-border leading-6 md:text-xl  text-justify p-6">
+                {description}
+              </p>
+            </div>
+          </Slide>
+        </div>
       </div>
     </div>
   );
 };
+
 
 const Kitchen = () => {
   return (
@@ -49,9 +49,9 @@ const Kitchen = () => {
         Welcome to "Chef Intelligence", your go-to platform for turning every day ingredients into delightful dishes! Our platform is designed to make your cooking experience not just convenient, but also creative and sustainable. Let's take a closer look at how it works:
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 flex flex-col md:grid md:grid-cols-3">
         {WhatIsInKitchenData.map((obj, index) => (
-          <AnimatedCard key={uuidv4()} index={index} {...obj} />
+            <AnimatedCard key={uuidv4()} index={index} {...obj} />
         ))}
       </div>
       <div className="custom-text flex px-6 md:px-20  mb-3 font-bold text-[2rem] justify-center items-center">

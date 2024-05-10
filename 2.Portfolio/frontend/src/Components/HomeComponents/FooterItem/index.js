@@ -34,10 +34,10 @@ const FooterItem = () => {
             <ul className="flex flex-col">
               <h2 className="footer-heading">Company</h2>
               <Link to="/aboutUs">About Us</Link>
-              <Link to="/Team">Team</Link>
-              <Link to="/career">Career</Link>
-              <Link to="/blogs">Blogs</Link>
-              <Link to="/news">News</Link>
+              <Link to="/Team" onClick={() => window.scrollTo(0, 0)}>Team</Link>
+              <Link to="/job" onClick={() => window.scrollTo(0, 0)}>Career</Link>
+              <Link to="/blogs" onClick={() => window.scrollTo(0, 0)}>Blogs</Link>
+              <Link to="/news" onClick={() => window.scrollTo(0, 0)}>News</Link>
             </ul>
           </div>
 
@@ -67,7 +67,7 @@ const FooterItem = () => {
                 <img
                   src={theme === 'light' ? X : "https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg"}
                   alt="x"
-                  className="ml-1 w-[15px] h-[15px] object-cover mr-3"
+                  className="ml-1 w-[15px] h-[15px] object-cover mr-3 shadow-xl shadow-white"
                 />
                 X
               </li>

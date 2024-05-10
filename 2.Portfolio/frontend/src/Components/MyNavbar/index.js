@@ -86,14 +86,14 @@ export default function MyNavbar({ theme, setTheme }) {
                       >
                         Company
                       </Link>
-                      <Link
+                      {/* <Link
                         onClick={() => window.scrollTo(0, 0)}
                         to="/chef-intelligence"
                         className={`nav-link ${location.pathname === "/company" ? "active" : ""
                           } rounded-md px-3 py-2 text-sm font-medium`}
                       >
                         Chef Intelligence
-                      </Link>
+                      </Link> */}
 
 
                       {localStorage.getItem('theme') === 'light' ? (

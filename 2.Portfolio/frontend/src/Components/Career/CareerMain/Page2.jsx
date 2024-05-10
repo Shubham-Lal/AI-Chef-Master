@@ -16,7 +16,7 @@ const data = [
   { image: operations, label: 'Operations', link: '/operations' },
   { image: RD, label: 'R & D', link: '/R&D' },
   { image: Technology, label: 'Technology', link: '/technology' },
-  { image: Sale, label: 'Sale & Marketing', link: '/sale-marketing' },
+  { image: Sale, label: 'Sales', link: '/sale-marketing' },
   { image: Design, label: 'Design', link: '/design' },
   { image: Internships, label: 'Internships', link: '/internships' },
 ];
@@ -82,9 +82,9 @@ const Page2 = () => {
           {data.map((item, index) => (
             <div className='transform transition-transform hover:scale-105'>
               <Fade key={index} delay={index * 100}>
-                <div className="w-64 h-64 sm:w-80 sm:h-80 flex-shrink bg-[#d1e3fa] hover:shadow-lg rounded-md border-2 ">
+                <div className="w-64 h-64 sm:w-60 sm:h-60 flex-shrink bg-[#d1e3fa] hover:shadow-lg rounded-md border-2 ">
                   <div className='p-2 flex justify-center items-center'>
-                    <img className='h-40 sm:h-64 mt-1' src={item.image} alt={item.label} />
+                    <img className='h-20 sm:h-32 mt-1' src={item.image} alt={item.label} />
                   </div>
                   <div className="flex gap-4 justify-center">
                     <Button
