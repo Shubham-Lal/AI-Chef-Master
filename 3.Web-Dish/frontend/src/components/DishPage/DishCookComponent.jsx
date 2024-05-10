@@ -38,7 +38,7 @@ const RecipeSteps = ({ dish, people, steps }) => {
             <div key={currentStep}>
                 <h2 className="text-2xl font-semibold mb-4">{`${currentStep + 1}. ${dish.instructions[currentStep].step} (${dish.instructions[currentStep].time[people - 1]} mins)`}</h2>
                 <div className="flex justify-center items-center">
-                    <Cooking videoSource='/hls/Soak_Ingredients1.mp4' />
+                    <Cooking videoSource={dish.instructions[currentStep].instruction_video_url ||'/hls/Soak_Ingredients1.mp4'} />
                 </div>
                 <Fade bottom cascade delay={500}>
                     <ul className="list-disc pl-6 mb-6">
