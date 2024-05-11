@@ -6,7 +6,6 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { MdArrowDropDown } from "react-icons/md";
 import { IoSettingsSharp } from "react-icons/io5";
 import { Link, useLocation } from "react-router-dom";
-import CompanyLogo from '/CompanyLogo.png';
 import { FiSearch } from "react-icons/fi";
 
 const Flag = ({ countryFlag }) => (
@@ -79,7 +78,7 @@ export default function NavBarHeader() {
             <div className="flex justify-between mx-1 items-center h-16">
                 <Link to='/' onClick={() => window.scrollTo(0, 0)}>
                     <div className="flex items-center md:gap-1 lg:gap-3">
-                        <img className="h-14 rounded-lg w-auto navbar-logo" src={CompanyLogo} alt="LOGO" />
+                        <img className="h-14 rounded-lg w-auto navbar-logo" src='/assets/CompanyLogo.png' alt="LOGO" />
                         <p className="text-lg font-bold md:text-sm leading-4 lg:text-lg">AI CHEF MASTER</p>
                     </div>
                 </Link>

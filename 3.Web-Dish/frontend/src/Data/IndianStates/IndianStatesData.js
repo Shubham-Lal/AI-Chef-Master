@@ -1,16 +1,12 @@
-/** @format */
-
 export const IndianStates = [
   {
     stateName: "Andhra Pradesh",
     stateLogo:
       "https://www.fabhotels.com/blog/wp-content/uploads/2019/03/Places-to-visit-in-Vijayawada600x400.jpg",
-    statePath: "/All-Indian-Dishes/AndhraPradesh"
   },
   {
     stateName: "Arunachal Pradesh",
     stateLogo: "https://arunachalpradesh.gov.in/images/banner1.jpg",
-    statePath: "/All-Indian-Dishes/ArunachalPradesh"
   },
   {
     stateName: "Assam",

@@ -44,7 +44,7 @@ export default function Dish({ lightMode }) {
 
     return (
         <div className="flex flex-col w-full md:w-5/6 mx-auto min-h-[calc(100dvh-56px)] items-center justify-center px-2 mt-24">
-            {/* <img src='/CompanyLogo.png' alt="" className="w-36 h-36" /> */}
+            {/* <img src='/assets/CompanyLogo.png' alt="" className="w-36 h-36" /> */}
             <Typewriter text="Chef Intelligence" delay={200} />
 
             {recipeDetails && (<RecipeDetails recipe={recipeDetails} lightMode={lightMode} />)}

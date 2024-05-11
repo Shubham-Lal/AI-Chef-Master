@@ -44,7 +44,7 @@ function CreateAccount() {
     <>
       <div className='flex md:flex-row flex-col bg-[#00544f] h-[calc(100vh-64px)]'>
         <div className=' flex flex-col gap-5 justify-center py-8   items-center mx-auto md:w-2/5'>
-          <img className='rounded-full h-[20vh]' src="/CompanyLogo.png" alt="Logo" />
+          <img className='rounded-full h-[20vh]' src="/assets/CompanyLogo.png" alt="Logo" />
           <h1 className='text-yellow-300 text-xl sm:text-xl md:text-2xl lg:text-3xl  font-medium'>Create Your Account</h1>
           <h1 className='text-yellow-300  text-xl sm:text-xl md:text-2xl lg:text-3xl  font-medium'>Welcome To AI Chef Master</h1>
           <h1 className='text-white text-center text-xl sm:text-xl md:text-2xl lg:text-3xl font-medium'>Where Taste Meets Technology - Experience AI Chef Master</h1>
