@@ -255,6 +255,25 @@ def get_dishes():
     
     return jsonify(dishes_list), 201
 
+@app.route('/dishes/state', methods=['POST'])
+def get_state_dishes():
+    try:
+        state = request.json.get('state')
+        if not state:
+            return jsonify({"error": "Missing state in request body"}), 400
+
+        dishes = db['Dish'].find({"popularity_state": state})
+        
+        dishes_list = []
+        for dish in dishes:
+            dish['_id'] = str(dish['_id'])
+            dishes_list.append(dish)
+        
+        return jsonify(dishes_list), 200
+    except PyMongoError as e:
+        print(f"An error occurred: {e}")
+        return jsonify({"error": "An error occurred while fetching the dishes"}), 500
+
 @app.route('/dish', methods=['POST'])
 def get_dish():
     try:
