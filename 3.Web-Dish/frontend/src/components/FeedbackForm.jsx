@@ -1,21 +1,33 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Footer from "./FooterItem/Footer";
 
 function FeedbackForm() {
-  const [reviewType, setReviewType] = useState(""); // State to store the type of review
+  const navigate = useNavigate()
 
-  // Function to handle submitting the form
-  const handleSubmit = (e) => {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [reviewType, setReviewType] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+    if (!email.trim() || !message.trim()) return
+
+    await fetch(`${import.meta.env.VITE_API_URL}/feedback`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, message, reaction: reviewType })
+    })
+
+    navigate('/');
   };
 
   return (
     <>
       <div className="bg-[#f7f3cd] p-4 min-h-screen flex flex-col justify-center items-center">
         <h1 class="text-center text-2xl font-bold mb-3">
-            Congratulations on creating a delicious dish <br />
-            <span class="text-gray-600">Please provide your feedback</span>
+          Congratulations on creating a delicious dish <br />
+          <span class="text-gray-600">Please provide your feedback</span>
         </h1>
         <div className="max-w-md w-full bg-[#00544f] rounded-lg shadow-lg p-6">
           <h2 className="text-2xl font-bold text-white mb-4">Feedback</h2>
@@ -33,6 +45,8 @@ function FeedbackForm() {
                 name="email"
                 className="w-full rounded border border-gray-300 bg-gray-50 py-2 px-3 text-base text-gray-700 focus:outline-none focus:border-blue-500"
                 placeholder="Your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div>
@@ -45,30 +59,35 @@ function FeedbackForm() {
                 rows="4"
                 className="w-full rounded border border-gray-300 bg-gray-50 py-2 px-3 text-base text-gray-700 resize-none focus:outline-none focus:border-blue-500"
                 placeholder="Your message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
               ></textarea>
             </div>
             <div className="flex justify-between gap-4 flex-wrap flex-1">
               {/* Buttons for different review types */}
               <button
+                type="button"
                 className="review-button flex-grow flex-initial bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 focus:outline-none focus:bg-green-600 transition duration-300"
                 onClick={() => setReviewType("good")}
               >
                 😊 Good
               </button>
               <button
+                type="button"
                 className="review-button flex-grow flex-initial bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 focus:outline-none focus:bg-yellow-600 transition duration-300"
                 onClick={() => setReviewType("bad")}
               >
                 😞 Bad
               </button>
               <button
+                type="button"
                 className="review-button flex-grow flex-initial bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600 transition duration-300"
                 onClick={() => setReviewType("super")}
               >
                 🚀 Super
               </button>
             </div>
-            <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600 transition duration-300">
+            <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600 transition duration-300">
               Send Feedback
             </button>
           </form>

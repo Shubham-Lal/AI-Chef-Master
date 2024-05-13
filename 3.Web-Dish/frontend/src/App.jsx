@@ -38,16 +38,6 @@ import PohaCook from './components/Dishes/Luxury-Dishes/India/BreakFastSingleIte
 import AlooParatha from './components/Dishes/Luxury-Dishes/India/BreakFastSingleItems/AlooParatha';
 import AlooParathaCook from './components/Dishes/Luxury-Dishes/India/BreakFastSingleItems/AlooParathaCook';
 
-// import AndhraPradesh from './components/Dishes/All-NavItem/AndhraPradeshState/AndhraPradesh';
-// import AndhraPradeshLuxuryBreakFast from './components/Dishes/All-NavItem/AndhraPradeshState/AndhraPradeshLuxuryBreakFast';
-// import AndhraPradeshLuxuryLunch from './components/Dishes/All-NavItem/AndhraPradeshState/AndhraPradeshLuxuryLunch';
-// import AndhraPradeshLuxuryDinner from './components/Dishes/All-NavItem/AndhraPradeshState/AndhraPradeshLuxuryDinner';
-
-// import ArunachalPradesh from './components/Dishes/All-NavItem/ArunachalPradeshState/ArunachalPradesh';
-// import ArunachalPradeshLuxuryBreakFast from './components/Dishes/All-NavItem/ArunachalPradeshState/ArunachalPradeshLuxuryBreakFast';
-// import ArunachalPradeshLuxuryLunch from './components/Dishes/All-NavItem/ArunachalPradeshState/ArunachalPradeshLuxuryLunch';
-// import ArunachalPradeshLuxuryDinner from './components/Dishes/All-NavItem/ArunachalPradeshState/ArunachalPradeshLuxuryDinner';
-
 import QuickDishes from './components/Dishes/Quick-Dishes/QuickDishes';
 import HealthyDishes from './components/Dishes/Healthy-Dishes/HealthyDishes';
 import ChooseRegion from './components/ChooseRegions/ChooseRegion';
@@ -123,16 +113,6 @@ const App = () => {
                 <Route path='/Aloo-Paratha' element={<AlooParatha />} />
                 <Route path='/Aloo-Paratha-Cook' element={<AlooParathaCook />} />
 
-                {/* <Route path='/All-Indian-Dishes/Andhra Pradesh' element={<AndhraPradesh />} />
-                <Route path='/All-Indian-Dishes/Andhra Pradesh/AndhraPradeshLuxuryBreakFast' element={<AndhraPradeshLuxuryBreakFast />} />
-                <Route path='/All-Indian-Dishes/Andhra Pradesh/AndhraPradeshLuxuryLunch' element={<AndhraPradeshLuxuryLunch />} />
-                <Route path='/All-Indian-Dishes/Andhra Pradesh/AndhraPradeshLuxuryDinner' element={<AndhraPradeshLuxuryDinner />} />
-                
-                <Route path='/All-Indian-Dishes/Arunachal Pradesh' element={<ArunachalPradesh />} />
-                <Route path='/All-Indian-Dishes/Arunachal Pradesh/ArunachalPradeshLuxuryBreakFast' element={<ArunachalPradeshLuxuryBreakFast />} />
-                <Route path='/All-Indian-Dishes/Arunachal Pradesh/ArunachalPradeshLuxuryLunch' element={<ArunachalPradeshLuxuryLunch />} />
-                <Route path='/All-Indian-Dishes/Arunachal Pradesh/ArunachalPradeshLuxuryDinner' element={<ArunachalPradeshLuxuryDinner />} /> */}
-
                 <Route path='/Quick-Dishes' element={<QuickDishes />} />
                 <Route path='/Healthy-Dishes' element={<HealthyDishes />} />
                 <Route path='/RecommendedQuickDishes' element={<RecommendedQuickDishes />} />
@@ -175,3 +155,21 @@ const App = () => {
 }
 
 export default App;
+
+// import AndhraPradesh from './components/Dishes/All-NavItem/AndhraPradeshState/AndhraPradesh';
+// import AndhraPradeshLuxuryBreakFast from './components/Dishes/All-NavItem/AndhraPradeshState/AndhraPradeshLuxuryBreakFast';
+// import AndhraPradeshLuxuryLunch from './components/Dishes/All-NavItem/AndhraPradeshState/AndhraPradeshLuxuryLunch';
+// import AndhraPradeshLuxuryDinner from './components/Dishes/All-NavItem/AndhraPradeshState/AndhraPradeshLuxuryDinner';
+// import ArunachalPradesh from './components/Dishes/All-NavItem/ArunachalPradeshState/ArunachalPradesh';
+// import ArunachalPradeshLuxuryBreakFast from './components/Dishes/All-NavItem/ArunachalPradeshState/ArunachalPradeshLuxuryBreakFast';
+// import ArunachalPradeshLuxuryLunch from './components/Dishes/All-NavItem/ArunachalPradeshState/ArunachalPradeshLuxuryLunch';
+// import ArunachalPradeshLuxuryDinner from './components/Dishes/All-NavItem/ArunachalPradeshState/ArunachalPradeshLuxuryDinner';
+
+{/* <Route path='/All-Indian-Dishes/Andhra Pradesh' element={<AndhraPradesh />} />
+<Route path='/All-Indian-Dishes/Andhra Pradesh/AndhraPradeshLuxuryBreakFast' element={<AndhraPradeshLuxuryBreakFast />} />
+<Route path='/All-Indian-Dishes/Andhra Pradesh/AndhraPradeshLuxuryLunch' element={<AndhraPradeshLuxuryLunch />} />
+<Route path='/All-Indian-Dishes/Andhra Pradesh/AndhraPradeshLuxuryDinner' element={<AndhraPradeshLuxuryDinner />} />             
+<Route path='/All-Indian-Dishes/Arunachal Pradesh' element={<ArunachalPradesh />} />
+<Route path='/All-Indian-Dishes/Arunachal Pradesh/ArunachalPradeshLuxuryBreakFast' element={<ArunachalPradeshLuxuryBreakFast />} />
+<Route path='/All-Indian-Dishes/Arunachal Pradesh/ArunachalPradeshLuxuryLunch' element={<ArunachalPradeshLuxuryLunch />} />
+<Route path='/All-Indian-Dishes/Arunachal Pradesh/ArunachalPradeshLuxuryDinner' element={<ArunachalPradeshLuxuryDinner />} /> */}

@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify,url_for,redirect,session,render_template
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
+import mysql.connector
 from flask_jwt_extended import create_access_token ,jwt_required ,create_refresh_token ,JWTManager,get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS,cross_origin
@@ -13,6 +14,7 @@ import identity.web
 import requests
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
+load_dotenv()
 from pathlib import Path
 import json
 import urllib
@@ -42,6 +44,13 @@ scheduler.start()
 
 client = MongoClient(os.getenv('MONGODB_URL'))
 db = client['AI_Chef_Master']
+
+mysql = mysql.connector.connect(
+    host=os.getenv('MYSQL_HOST'),
+    user=os.getenv('MYSQL_USER'),
+    password=os.getenv('MYSQL_PASSWORD'),
+    database=os.getenv('MYSQL_DATABASE')
+)
 
 # google login 
 app.config["GOOGLE_OAUTH_CLIENT_ID"] = os.getenv('GOOGLE_OAUTH_CLIENT_ID')
@@ -290,6 +299,35 @@ def get_dish():
     except PyMongoError as e:
         print(f"An error occurred: {e}")
         return jsonify({"error": "An error occurred while fetching the dish"}), 500
+
+@app.route('/feedback', methods=['POST'])
+def add_message():
+    data = request.get_json()
+    email = data.get('email')
+    message = data.get('message')
+    reaction = data.get('reaction')
+
+    if email and message:
+        message_data = {
+            'email': email,
+            'message': message,
+            'reaction': reaction
+        }
+        db.Feedback.insert_one(message_data)
+
+        sql = "INSERT INTO Feedback (email, message, reaction) VALUES (%s, %s, %s)"
+        val = (email, message, reaction if reaction is not None else None)
+
+        cursor = mysql.cursor()
+        cursor.execute(sql, val)
+        mysql.commit()
+
+        cursor.close()
+        mysql.close()
+
+        return jsonify({'message': 'Message added successfully'}), 201
+    else:
+        return jsonify({'error': 'Missing required fields'}), 400
 
 # app.config['UPLOAD_FOLDER'] = 'files'
 @app.route('/career' ,methods = ['POST'])
