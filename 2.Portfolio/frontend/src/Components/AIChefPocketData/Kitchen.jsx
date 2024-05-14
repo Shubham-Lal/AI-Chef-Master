@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Fade, Slide } from "react-reveal";
 import { v4 as uuidv4 } from "uuid";
 
 import WhatIsInKitchenData from "./Data/WhatIsInKitchenData";
 const AnimatedCard = ({ imageUrl, imageAlt, heading, description, index }) => {
+  const [themeClass, setThemeClass] = useState("");
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    console.log(themeClass);
+    const computedThemeClass =
+      theme === "dark" ? "text-white bg-slate-900 " : "text-black bg-white";
+    setThemeClass(computedThemeClass);
+  }, []);
   return (
     <div>
       <div
-        className={`flex flex-col md:flex-col md:min-h-full mx-2 flex-wrap rounded-2xl bg-white  w-12/12 gap-4 md:gap-2`}
+        className={`flex flex-col md:flex-col md:min-h-full mx-2 flex-wrap rounded-2xl ${themeClass}  w-12/12 gap-4 md:gap-2`}
       >
         <Fade>
           <img

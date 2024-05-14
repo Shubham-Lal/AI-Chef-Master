@@ -7,12 +7,24 @@ import i10 from "./i10.jpg";
 import i11 from "./i11.jpg";
 import { Fade, Slide } from "react-reveal";
 import { v4 as uuidv4 } from "uuid";
+import  { useEffect, useState } from "react";
+
+
 import "animate.css";
 const AnimatedCard = ({ imageUrl, imageAlt, heading, description, index }) => {
+  const [themeClass, setThemeClass] = useState("");
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    console.log(themeClass);
+    const computedThemeClass =
+      theme === "dark" ? "text-white bg-slate-900 " : "text-black bg-white";
+    setThemeClass(computedThemeClass);
+  }, []);
   return (
     <div>
       <div
-        className={`flex flex-col mt-6 md:flex-col md:min-h-full mx-2 flex-wrap rounded-2xl bg-white  w-12/12 gap-4 md:gap-6  `}
+        className={`flex flex-col mt-6 md:flex-col md:min-h-full mx-2 flex-wrap rounded-2xl ${themeClass}  w-12/12 gap-4 md:gap-6  `}
       >
         <Fade>
           <img

@@ -1,10 +1,10 @@
 import React from "react";
 import { Carousel, Button } from "@material-tailwind/react";
-// import gulabjamun from "../../Images/gulabjamun.png";
 import beans from "../../Images/beans.png";
 import biryani from "../../Images/biryani.png";
 import daal from "../../Images/daal.png";
-import naan from "../../Images/naan.png";
+import salad from "../../Images/—Pngtree—healthy food_3776802.png";
+import pizza from '../../Images/—Pngtree—modern kitchen food box italian_9047468.png'
 import sambhar from "../../Images/sambhar.png";
 import "../Unique/index.css";
 import "tailwindcss/tailwind.css"; // Import Tailwind CSS first
@@ -17,7 +17,6 @@ export default function Unique() {
     <div className="background-main-page h-full break-words ">
       <div className=" flex flex-col md:flex-row justify-evenly items-center px-6 md:px-10 py-8 md:py-20">
         <div className="lg:w-7/12 sm:w-full md:w-full mb-8 sm:mb-0 ">
-          {/* <Fade top> */}
           <h1
             style={{ lineHeight: "3rem" }}
             className="main-heading relative text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 md:text-start"
@@ -25,7 +24,6 @@ export default function Unique() {
             <Typewriter text="Welcome to AI Chef Master" delay={100} />
             <div className="w-[300px] h-[300px] z-1 rounded-full absolute top-[-125px] left-[-40px] blur-3xl bg-[#8bfb451c]" />
           </h1>
-          {/* </Fade> */}
           <div className="md:text-start">
             <Fade bottom>
               <p className="sub-heading mb-4 text-base sm:text-xl md:text-xl lg:text-2xl">
@@ -38,7 +36,7 @@ export default function Unique() {
               >
                 <Link
                   to="/signup"
-                  className="no-underline text-white font-bold"
+                  className="no-underline text-white px-4 py-2 text-base font-bold"
                 >
                   Try for Free ➪
                 </Link>
@@ -55,21 +53,22 @@ export default function Unique() {
                 autoplayDelay={3000}
                 loop
               >
-                <img
-                  src={naan}
-                  alt="naan"
+                         <img
+                  src={salad}
+                  alt="salad"
                   className="object-cover w-full h-full"
+                />
+                <img
+                  src={pizza}
+                  alt="pizza"
+                  className="object-cover w-full h-full mt-20"
                 />
                 <img
                   src={daal}
                   alt="daal"
                   className="object-cover w-full h-full"
                 />
-                <img
-                  src={sambhar}
-                  alt="sambhar"
-                  className="object-cover w-full h-full"
-                />
+       
                 <img
                   src={beans}
                   alt="beans"

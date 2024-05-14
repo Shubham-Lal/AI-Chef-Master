@@ -33,7 +33,7 @@ const FooterItem = () => {
           <div className="w-full lg:w-3/12 md:w-4/12 sm:w-6/12 flex justify-center mb-5">
             <ul className="flex flex-col">
               <h2 className="footer-heading">Company</h2>
-              <Link to="/aboutUs">About Us</Link>
+              <Link to="/aboutUs" onClick={() => window.scrollTo(0, 0)}>About Us</Link>
               <Link to="/Team" onClick={() => window.scrollTo(0, 0)}>Team</Link>
               <Link to="/job" onClick={() => window.scrollTo(0, 0)}>Career</Link>
               <Link to="/blogs" onClick={() => window.scrollTo(0, 0)}>Blogs</Link>

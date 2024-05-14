@@ -114,7 +114,7 @@ function LoginIn() {
                         </div>
                     </form>
 
-                    <p className='text-3xl font-medium  text-center'>Or</p>
+                    <p className='text-3xl font-medium  text-center'>or</p>
 
                     <div className='flex justify-center'>
                         <p className='mb-5'> Create New Account <Link className="text-emerald-800 font-medium" to="/signup">Signup</Link></p>

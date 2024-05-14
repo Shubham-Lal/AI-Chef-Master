@@ -30,7 +30,7 @@ function Counter({ end, duration, className }) {
 
   return (
     <div className={className} ref={counterRef}>
-      <span className="counter text-4xl md:text-7xl font-bold">
+      <span className=" text-4xl md:text-7xl font-bold">
         {Math.floor(count)}
       </span>
     </div>
@@ -39,7 +39,7 @@ function Counter({ end, duration, className }) {
 
 function Madein() {
   return (
-    <div className="bg-made-india bg-opacity-50">
+    <div className="">
       <div className="flex flex-col  md:flex-row items-center justify-between px-6 md:px-10 py-8 md:py-20 bg-white my-1 bg-opacity-5">
         <Fade bottom cascade>
           <div className="mb-6 md:mb-0 md:w-1/2 bg-opacity-50">
@@ -56,19 +56,19 @@ function Madein() {
               <Counter
                 end={0}
                 duration={2}
-                className="counter text-2xl md:text-3xl font-bold"
+                className=" text-2xl md:text-3xl font-bold text-black"
               />
-              <p className="counter-name text-2xl md:text-3xl font-bold">
+              <p className=" text-2xl md:text-3xl font-bold">
                 Users
               </p>
             </div>
-            <div className="mb-4 md:mb-0 text-center border-r-2">
+            <div className="mb-4 md:mb-0 text-center border-r-2 text-black">
               <Counter
                 end={10}
                 duration={2}
-                className="counter text-2xl md:text-3xl font-bold"
+                className=" text-2xl md:text-3xl font-bold"
               />
-              <p className="counter-name text-xl mr-2 md:text-3xl font-bold">
+              <p className=" text-xl mr-2 md:text-3xl font-bold">
                 Employees
               </p>
             </div>
@@ -76,9 +76,9 @@ function Madein() {
               <Counter
                 end={3}
                 duration={2}
-                className="counter text-2xl md:text-3xl font-bold"
+                className=" text-2xl md:text-3xl font-bold"
               />
-              <p className="counter-name text-2xl md:text-3xl font-bold">
+              <p className=" text-2xl md:text-3xl font-bold">
                 Cities
               </p>
             </div>
@@ -86,9 +86,9 @@ function Madein() {
               <Counter
                 end={5}
                 duration={2}
-                className="counter text-2xl md:text-3xl font-bold"
+                className=" text-2xl md:text-3xl font-bold"
               />
-              <p className="counter-name text-2xl md:text-3xl font-bold">
+              <p className=" text-2xl md:text-3xl font-bold">
                 Products
               </p>
             </div>

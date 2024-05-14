@@ -6,6 +6,7 @@ import Customer from "../CardData/Customer";
 import FooterItem from "../HomeComponents/FooterItem";
 
 const Company = () => {
+  
   return (
     <div>
       <LongTerm />

@@ -85,7 +85,7 @@ function Pocket() {
   const CardList = [
     {
       video: "",
-      heading: "AI Assistant",
+      heading: "Chef Assistant",
       description:
         "Elevate your cooking into a tailored and engaging adventure. This feature directs users in creating delightful dishes by enabling customization of quantities and ingredients, unfolding the recipe seamlessly through a blend of audio, text, and video to enhance the culinary journey. For more details on how this feature can transform your cooking experience and unlock a world of possibilities in the kitchen.",
       pathRoute: "/AiAssistant",
