@@ -377,11 +377,10 @@ const DashboardForm = ({ setTab, form, setForm }) => {
                 <option value="Breakfast">Breakfast</option>
                 <option value="Brunch">Brunch</option>
                 <option value="Desserts">Desserts</option>
-                <option value="Appetizers">Dinner</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Lunch">Lunch</option>
                 <option value="Main Course">Main Course</option>
                 <option value="Side Dishes">Side Dishes</option>
-                <option value="Snacks">Snacks</option>
-                <option value="Drinks">Tea or Coffee</option>
               </select>
 
               <ul className="flex flex-wrap gap-2 my-2 w-full">
