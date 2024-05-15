@@ -19,13 +19,19 @@ const About = () => {
           <p className="text-xl ">WHERE CULINARY CREATIVITY MEETS
             CUTTING-EDGE TECHNOLOGY.</p>
         </div>
-        <div className="flex flex-col md:flex-row justify-around pt-12 pb-32">
-          <img
-            className="border rounded-3xl w-full md:w-2/5 mb-8 md:mb-0"
-            style={{ height: "400px" }}
-            src={img1}
-            alt="about"
-          />
+        <div className="flex flex-col md:flex-row h-full justify-around mt-3 mb-12">
+        <video
+            autoPlay
+            loop
+            muted
+            className="w-full md:h-screen h-80 max-w-7xl rounded-xl "
+            style={{
+              objectFit: "cover",
+              filter: "brightness(0.9)", // Adjust the brightness value as needed
+            }}
+          >
+            <source src={"assets/women_cooking.mp4"} type="video/mp4" />
+          </video>
         </div>
         <div className="flex justify-center item-center h-24 bg-cyan-600 border rounded-lg mb-8 md:ml-20 md:mr-20 mt-2">
           <h1 className="text-5xl font-bold text-white font-serif py-4">
