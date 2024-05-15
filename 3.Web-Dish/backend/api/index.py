@@ -322,9 +322,6 @@ def add_message():
         cursor.execute(sql, val)
         mysql.commit()
 
-        cursor.close()
-        mysql.close()
-
         return jsonify({'message': 'Message added successfully'}), 201
     else:
         return jsonify({'error': 'Missing required fields'}), 400
