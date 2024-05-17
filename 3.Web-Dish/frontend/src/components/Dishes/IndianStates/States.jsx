@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Marquee from 'react-fast-marquee';
 import { useSpring, animated } from 'react-spring';
@@ -83,12 +83,12 @@ function IndianStates() {
                             ) : (
                                 <>
                                     {viewMore ? (
-                                        <div key={index} className='text-center'>
+                                        <div key={index} className='text-center w-[180px] md:w-auto'>
                                             <Link to={state.stateName}>
                                                 <div className='flex py-8 flex-col items-center hover:scale-110 transition-transform duration-300'>
                                                     <img
                                                         style={{ borderRadius: '50%' }}
-                                                        className=' w-[160px] h-[160px] md:w-[200px] md:h-[200px] object-cover border-2 shadow-xl shadow-slate-400'
+                                                        className={`${index === 0 || index === 7 ? "margin-top-image" : ""} w-[160px] h-[160px] md:w-[200px] md:h-[200px] object-cover border-2 shadow-xl shadow-slate-400`}
                                                         src={state.stateLogo}
                                                         alt={state.stateName}
                                                     />
@@ -138,6 +138,13 @@ function IndianStates() {
 
           .smooth-scroll::-webkit-scrollbar {
             display: none;
+          }
+
+          @media screen and (max-width: 767px) {
+            /* Very small devices */
+            .margin-top-image {
+              margin-top: 28px;
+            }
           }
 
           @media screen and (max-width: 764px) {

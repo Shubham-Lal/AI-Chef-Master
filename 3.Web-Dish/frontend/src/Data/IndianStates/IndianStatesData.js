@@ -33,9 +33,14 @@ export const IndianStatesData = [
       "https://ihplb.b-cdn.net/wp-content/uploads/2018/04/Sirpur-Heritage-Site.jpg"
   },
   {
-    stateName: "Dadra and Nagar Haveli and Daman and Diu",
+    stateName: "Dadra and Nagar Haveli",
     stateLogo:
       "https://www.exoticgringo.com/wp-content/uploads/2014/08/st-pauls-church.jpg"
+  },
+  {
+    stateName: "Daman and Diu",
+    stateLogo:
+      "https://www.asparkholidays.com/uploads/60322_Panikota-Fort_Daman-Tourist-Places.jpg"
   },
   {
     stateName: "Delhi",
