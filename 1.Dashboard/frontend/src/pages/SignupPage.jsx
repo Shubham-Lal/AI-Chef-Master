@@ -16,22 +16,30 @@ const SignupPage = () => {
   const [ConfirmPassword, setConfirmPassword] = useState('')
   const [showPw, setShowPw] = useState(false)
   const [showConfirmPw, setShowConfirmPw] = useState(false);
-  const { signup, pwError, emailError, isLoading } = useSignup()
+
+  const [otp, setOTP] = useState('')
+  const [showOTP, setShowOTP] = useState(false)
+
+  const { signup, pwError, emailError, isLoading, sentOTP, verifyOTP, verifying } = useSignup()
   const navigate = useNavigate();
 
   const handleSignIn = () => {
     window.location.href = `${import.meta.env.VITE_API_URL}/login/google`;
   };
 
-  const handleSubmit = async (e) => {
+  const handleCreateAccount = async (e) => {
     e.preventDefault();
-
-    await signup(email, firstName, lastName, password, ConfirmPassword, navigate)
+    await signup(email, firstName, lastName, password, ConfirmPassword)
+  }
+  
+  const handleVerifyOTP = async (e) => {
+    e.preventDefault();
+    await verifyOTP(email, otp, navigate)
   }
 
   return (
     <div className='custom-text px-4 sm:px-4 h-screen py-12'>
-      <form className='py-8 flex flex-col justify-center items-center font-primary' onSubmit={handleSubmit}>
+      <form className='py-8 flex flex-col justify-center items-center font-primary'>
         <h3 className='text-4xl font-semibold text-center  py-2'>Create a new account</h3>
         <p className='text-center mb-8 text-base '>Enter the fields below to get started</p>
 
@@ -118,9 +126,32 @@ const SignupPage = () => {
             </div>
             {pwError && <Error error={pwError} />}
 
-            <button disabled={isLoading} className="bg-zinc-900 hover:bg-zinc-800 group relative md:w-1/2 px-8 py-3 overflow-hidden font-medium rounded-xl border  text-xl  shadow-xl  my-8">
-              <span className=" text-white">Create Account</span>
-            </button>
+            {!sentOTP ? (
+              <button type='button' disabled={isLoading} onClick={handleCreateAccount} className="bg-zinc-900 hover:bg-zinc-800 group relative md:w-1/2 px-8 py-3 overflow-hidden font-medium rounded-xl border  text-xl  shadow-xl  my-8">
+                <span className=" text-white">{isLoading ? 'Creating' : 'Create Account'}</span>
+              </button>
+            ) : (
+              <div className='flex md:gap-4 flex-col md:flex-row items-start'>
+                <div>
+                  <label>Enter OTP</label>
+                  <div className='relative'>
+                    <input type={showOTP ? 'text' : 'password'}
+                      className='custom-input custom-text block w-[300px] py-2 px-4 placeholder:italic my-2 border border-zinc-800 rounded-lg '
+                      onChange={(e) => setOTP(e.target.value)}
+                      value={otp}
+                      required={true}
+                      placeholder='******'
+                    />
+                    <BiShow className={` ${showOTP ? 'hidden' : 'flex'} absolute top-3 right-4 cursor-pointer`} onClick={() => { setShowOTP(!showOTP) }} />
+                    <MdOutlineVisibilityOff className={` ${showOTP ? 'flex' : 'hidden'} absolute top-3 right-4 cursor-pointer`} onClick={() => { setShowOTP(!showOTP) }} />
+                  </div>
+                </div>
+
+                <button type='button' disabled={verifying} onClick={handleVerifyOTP} className="bg-zinc-900 hover:bg-zinc-800 group relative md:w-1/2 px-8 h-[42px] overflow-hidden font-medium rounded-xl border  text-lg shadow-xl my-4 md:my-8">
+                  <span className=" text-white">{verifying ? 'Verifying' : 'Verify OTP'}</span>
+                </button>
+              </div>
+            )}
 
             <div className='flex w-full items-center  my-1 gap-x-2'>
               <div className='custom-bg-reverse w-full h-[1px]'></div>

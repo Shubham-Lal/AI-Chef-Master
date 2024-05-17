@@ -1,4 +1,4 @@
-from flask import Flask,request,jsonify,redirect ,session ,url_for 
+from flask import Flask, request, jsonify, redirect, session, url_for
 from flask_jwt_extended import JWTManager,jwt_required,create_access_token ,get_jwt_identity,get_current_user
 from pymongo import MongoClient
 from flask_dance.contrib.google import make_google_blueprint, google
