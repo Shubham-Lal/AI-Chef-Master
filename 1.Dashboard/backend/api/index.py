@@ -16,6 +16,8 @@ from pathlib import Path
 from datetime import datetime,timedelta
 from bson.regex import Regex
 import re
+from flask_mail import Mail, Message
+import pyotp
 
 app  = Flask(__name__)
 CORS(app, origins=os.getenv('FRONTEND_URL'), supports_credentials=True)
@@ -27,6 +29,13 @@ app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=1)
 app.config['JWT_REFRESH_TOKEN_EXPIRES'] = timedelta(days=30)
 jwt = JWTManager(app)
+
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+mail = Mail(app)
 
 client = MongoClient(os.getenv('MONGODB_URL'))
 db = client['AI_Chef_Master']
@@ -79,32 +88,63 @@ def google_callback():
 def sign_up():
     if request.method == 'POST':
         data = request.get_json()
-
-        first_name = data.get('first_name')
-        last_name = data.get('last_name')
         email = data.get('email')
-        password = data.get('password')
-        password_repeat = data.get('password_repeat')
         
         exist_chef = db.Chef.find_one({'email': email}, {'first_name': 1, 'user_id': 1})
 
         if exist_chef:
             return jsonify({"message": "User Already registered"}), 409
-        if password != password_repeat:
-            return jsonify({'message': 'Password not match'})
+
+        otp = pyotp.TOTP(pyotp.random_base32()).now()
+
+        session[email] = {
+            'source': 'manual',
+            'otp': otp,
+            'first_name': data.get('first_name'),
+            'last_name': data.get('last_name'),
+            'email': email,
+            'password': data.get('password')
+        }
+
+        msg = Message('Your OTP Code', sender="prempatil140398@gmail.com", recipients=[email])
+        msg.subject = 'OTP | AI Chef Recipe'
+        msg.body = f'Your OTP code is {otp}'
+        mail.send(msg)
         
-        user_id = "Chef" + first_name.upper() + "-" + str(round((datetime.now().timestamp())*1000000))
+        return jsonify({'message': 'OTP sent to your email'}), 201
+
+@app.route('/chef/verify_otp', methods=['POST'])
+def verify_otp():
+    data = request.get_json()
+    otp = data.get('otp')
+    email = data.get('email')
+
+    user_data = session.get(email)
+    if not user_data:
+        return jsonify({"message": "Session expired or invalid"}), 400
+
+    stored_otp = user_data.get('otp')
+    if stored_otp == otp:
+        exist_chef = db.Chef.find_one({'email': email})
+        if exist_chef:
+            return jsonify({"message": "User Already registered"}), 409
+
+        user_id = "Chef" + user_data['first_name'].upper() + "-" + str(round((datetime.now().timestamp()) * 1000000))
         
         db.Chef.insert_one({
-            'first_name': first_name,
-            'last_name': last_name,
+            'first_name': user_data['first_name'],
+            'last_name': user_data['last_name'],
             'email': email,
-            'password': password,
+            'password': user_data.get('password', ''),
             'user_id': user_id
         })
-        
-        return jsonify({'message':'SignUp Successful'}),201
-  
+
+        session.pop(email, None)
+
+        return jsonify(message='OTP verified, Account created successfully'), 200
+    else:
+        return jsonify(message='Invalid OTP, please try again.'), 401
+
 @app.route('/chef/login', methods=['POST'])
 def login():
     if request.method == 'POST':
