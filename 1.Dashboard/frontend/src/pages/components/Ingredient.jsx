@@ -192,6 +192,7 @@ const Ingredient = ({ formData, setFormData, portion }) => {
               i
             </span>
 
+
             <span
               role="tooltip"
               className="pointer-events-none absolute inline-flex items-center justify-center rounded-md px-3 py-1 font-semibold opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 bg-primary text-gray-800  bg-gray-100 min-h-7 text-sm left-1/2 -translate-x-1/2 after:absolute after:block after:size-0 after:border-8 after:border-transparent after:border-t-primary after:-bottom-[0.95rem] after:left-1/2 after:-translate-x-1/3 top-[-2.5rem] z-90 mt-1"
@@ -225,6 +226,40 @@ const Ingredient = ({ formData, setFormData, portion }) => {
                     } px-2 mt-2 py-1 text-lg w-full border border-black rounded-md focus:border-orange-400 placeholder:italic outline-none`}
                   />
                 </div>
+
+                                        className={`custom-input custom-text ${portion !== 1 ? "cursor-not-allowed" : "cursor-pointer"} px-2 mt-2 py-[7px] text-lg w-full border border-black rounded-md focus:border-orange-400 placeholder:italic outline-none`}
+                                    >
+                                        <option value="">Select Unit</option>
+                                        <option value="gram">gram</option>
+                                        <option value="mL">mL</option>
+                                        <option value="teaspoon">teaspoon</option>
+                                        <option value="tablespoon">tablespoon</option>
+                                        <option value="whole">piece</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="flex w-full items-center justify-center">
+                                {portion === 1 ? (
+                                    <button
+                                        onClick={handleIngredientSubmit}
+                                        type="button"
+                                        className={`text-white border  bg-zinc-700 p-2 px-6 my-4 rounded-xl hover:bg-zinc-950`}
+                                    >
+                                        Add Ingredient
+                                    </button>
+                                ) : portion !== 1 && !isQuantityDisabled && (
+                                    <button
+                                        onClick={handleIngredientSubmit}
+                                        type="button"
+                                        className={`text-white border  bg-zinc-700 p-2 px-6 my-4 rounded-xl hover:bg-zinc-950`}
+                                    >
+                                        Add Quantity
+                                    </button>
+                                )}
+                            </div>
+                        </>
+                    ) : null}
+
 
                 <div className="w-full lg:w-1/2 pt-4 lg:pt-0">
                   <label className="custom-text block">

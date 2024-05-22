@@ -26,17 +26,9 @@ const Card2 = ({ title, imageUrl, time, rating, dishPath }) => {
         {/* Details */}
         <div className="flex flex-col flex-grow py-4">
           <p className="text-white text-center font-semibold">{title}</p>
-          <div className="">
-            {/*}  <div className="hidden md:block">
-                  <div className="rating-content">
-                    <FaStar className="star-icon" />
-                    <p className="rating-text">{rating}/5</p>
-                  </div>
-  </div>*/}
-                <p className="text-white text-center font-semibold">Prep Time: {time} min</p>
-              </div>
-            </div>
-          </div>
+          <p className="text-white text-center font-semibold">Prep Time: {time} min</p>
+       </div>
+      </div>
     </Link>
   );
 };

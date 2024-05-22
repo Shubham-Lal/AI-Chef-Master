@@ -53,7 +53,7 @@ const Navbar = ({ lightMode, setLightMode, sideBarOpen, setSideBarOpen }) => {
               <div className="flex items-center">
                 <img
                   className="h-14 rounded-lg w-auto navbar-logo"
-                  src="/CompanyLogo.png"
+                  src="/assets/CompanyLogo.png"
                   alt="LOGO"
                 />
                 <Link

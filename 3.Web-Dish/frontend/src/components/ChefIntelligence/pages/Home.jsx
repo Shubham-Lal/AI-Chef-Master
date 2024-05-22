@@ -13,7 +13,9 @@ export default function Home({ lightMode }) {
     const colors = lightMode ? lightColors : darkColors;
     let userData;
     try { userData = JSON.parse(localStorage.getItem('user')); }
-    catch (error) { userData = {}; console.log(error); }
+    catch (error) {
+        userData = {};
+    }
 
     // const [openOverview, setOpenOverview] = useState(false);
 
@@ -88,7 +90,7 @@ export default function Home({ lightMode }) {
     return (
         <>
             <div className="flex flex-col w-full md:w-5/6 mx-auto min-h-[calc(100dvh-56px)] items-center justify-center px-2">
-                <img src='/CompanyLogo.png' alt="" className="w-36 h-36" />
+                <img src='/assets/CompanyLogo.png' alt="" className="w-36 h-36" />
                 <Typewriter text="Chef Intelligence" delay={200} />
                 <p className={`${colors.textParagraph} text-base lg:text-lg  mt-4 mb-0 text-center font-semibold max-w-2xl`}>
                     Elevate your culinary skills with the power of AI. Search for

@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify,url_for,redirect,session,render_template
 from pymongo import MongoClient
+from pymongo.errors import PyMongoError
+import mysql.connector
 from flask_jwt_extended import create_access_token ,jwt_required ,create_refresh_token ,JWTManager,get_jwt_identity
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS,cross_origin
@@ -12,6 +14,7 @@ import identity.web
 import requests
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
+load_dotenv()
 from pathlib import Path
 import json
 import urllib
@@ -22,6 +25,7 @@ import base64
 from flask_apscheduler import APScheduler
 from email.message import EmailMessage
 from flask_mail import Mail ,Message
+from functools import lru_cache
 
 
 app = Flask(__name__)
@@ -40,6 +44,13 @@ scheduler.start()
 
 client = MongoClient(os.getenv('MONGODB_URL'))
 db = client['AI_Chef_Master']
+
+mysql = mysql.connector.connect(
+    host=os.getenv('MYSQL_HOST'),
+    user=os.getenv('MYSQL_USER'),
+    password=os.getenv('MYSQL_PASSWORD'),
+    database=os.getenv('MYSQL_DATABASE')
+)
 
 # google login 
 app.config["GOOGLE_OAUTH_CLIENT_ID"] = os.getenv('GOOGLE_OAUTH_CLIENT_ID')
@@ -240,6 +251,80 @@ def process():
     data = request.get_json()
     result = db.CI.insert_one(data)
     return jsonify({'message': 'Data inserted successfully'}), 201
+
+@app.route('/dishes', methods=['GET'])
+@lru_cache(maxsize=None)
+def get_dishes():
+    dishes = db['Dish'].find()
+    
+    dishes_list = []
+    for dish in dishes:
+        dish['_id'] = str(dish['_id'])
+        dishes_list.append(dish)
+    
+    return jsonify(dishes_list), 201
+
+@app.route('/dishes/state', methods=['POST'])
+def get_state_dishes():
+    try:
+        state = request.json.get('state')
+        if not state:
+            return jsonify({"error": "Missing state in request body"}), 400
+
+        dishes = db['Dish'].find({"popularity_state": state})
+        
+        dishes_list = []
+        for dish in dishes:
+            dish['_id'] = str(dish['_id'])
+            dishes_list.append(dish)
+        
+        return jsonify(dishes_list), 200
+    except PyMongoError as e:
+        print(f"An error occurred: {e}")
+        return jsonify({"error": "An error occurred while fetching the dishes"}), 500
+
+@app.route('/dish', methods=['POST'])
+def get_dish():
+    try:
+        dish_name = request.json.get('dish_name')
+        if not dish_name:
+            return jsonify({"error": "Missing dish_name in request body"}), 400
+
+        dish = db['Dish'].find_one({"dish_name": dish_name})
+        if dish:
+            dish['_id'] = str(dish['_id'])
+            return jsonify(dish), 200
+        else:
+            return jsonify({"error": "Dish not found"}), 404
+    except PyMongoError as e:
+        print(f"An error occurred: {e}")
+        return jsonify({"error": "An error occurred while fetching the dish"}), 500
+
+@app.route('/feedback', methods=['POST'])
+def add_message():
+    data = request.get_json()
+    email = data.get('email')
+    message = data.get('message')
+    reaction = data.get('reaction')
+
+    if email and message:
+        message_data = {
+            'email': email,
+            'message': message,
+            'reaction': reaction
+        }
+        db.Feedback.insert_one(message_data)
+
+        sql = "INSERT INTO Feedback (email, message, reaction) VALUES (%s, %s, %s)"
+        val = (email, message, reaction if reaction is not None else None)
+
+        cursor = mysql.cursor()
+        cursor.execute(sql, val)
+        mysql.commit()
+
+        return jsonify({'message': 'Message added successfully'}), 201
+    else:
+        return jsonify({'error': 'Missing required fields'}), 400
 
 # app.config['UPLOAD_FOLDER'] = 'files'
 @app.route('/career' ,methods = ['POST'])

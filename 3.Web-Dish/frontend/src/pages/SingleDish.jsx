@@ -25,7 +25,7 @@ return (
                             <BsFillStopwatchFill className="text-4xl md:mt-2" />
                             <div className="font-semibold text-sm md:text-base">
                                 <p className="text-xs md:text-sm">Time</p>
-                                <p className="text-xs md:text-sm">{preprationTime}</p>
+                                <p className="text-xs md:text-sm">{preprationTime} mins</p>
                             </div>
                         </div>
 

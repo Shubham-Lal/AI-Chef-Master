@@ -210,8 +210,10 @@ const InstructionsPage = ({ setTab, formData, setFormData }) => {
 
   useEffect(() => {
     const totalTime = formData.instructions.reduce((acc, instruction) => {
-      const timeArray = Array.isArray(instruction.time) ? instruction.time : [];
-      return acc + timeArray.reduce((timeAcc, time) => timeAcc + parseInt(time), 0);
+      if (Array.isArray(instruction.time) && instruction.time.length > 4) {
+        return acc + parseInt(instruction.time[4], 10);
+      }
+      return acc;
     }, 0);
 
     const updatedFormData = {

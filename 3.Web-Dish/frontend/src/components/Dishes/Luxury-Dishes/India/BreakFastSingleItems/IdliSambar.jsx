@@ -1,35 +1,20 @@
 import React, { useState } from "react";
 import SingleDish from "../../../../../pages/SingleDish";
 //import NewMultiSelect from '../../../../../components/SingleDishItems/NewMultiSelect';
-import RecommendedDishes from "../../../../RecommendedDIshes/RecommendedDishes";
-import KitchenEquipments from '../../../../../components/SingleDishItems/KitchenEquipments';
+ import KitchenEquipments from '../../../../../components/SingleDishItems/KitchenEquipments';
 import NumberOfPeople from '../../../../../components/SingleDishItems/NumberOfPeople';
 import MainIngradients from "../../../../SingleDishItems/MainIngradients";
 import { Link } from "react-router-dom";
 import { IndianBreakFast } from "../../../../../Data/LuxuryDishesData/IndianDishes/IndianBreakFast";
-const options = [
-  { label: "Coriander Powder", value: "coriander_powder" },
-  { label: "Red Chili Powder", value: "red_chili_powder" },
-  { label: "Garam Masala", value: "garam_masala" },
-  { label: "Chopped Tomatoes", value: "chopped_tomatoes" },
-  { label: "Grated Carrots", value: "grated_carrots" },
-  { label: "Green Peas", value: "green_peas" },
-  { label: "Bell Peppers (Capsicum)", value: "bell_peppers" },
-  { label: "Paneer (Indian Cottage Cheese)", value: "paneer" },
-  { label: "Cashews", value: "cashews" },
-  { label: "Mint Leaves", value: "mint_leaves" },
-  { label: "Lemon Juice", value: "lemon_juice" },
-  { label: "Turmeric Powder", value: "turmeric_powder" },
-
-];
-const NutritionValue = [
-  { title: "Calories 🔥", quantity: "500" },
-  { title: "Protein 🥩", quantity: "10g" },
-  { title: "Carbs 🍚", quantity: "70g" },
-  { title: "Fats 🥑", quantity: "20g" },
-  { title: "Fiber🌾", quantity: "5g" },
-];
-
+import Marquee from 'react-fast-marquee';
+import { useSpring, animated } from 'react-spring';
+import Flip from 'react-reveal/Flip';  
+import 'animate.css/animate.min.css';
+import Card2 from "../../../../Card2";
+import RecommendedData from "../../../../../Data/RecommendedData";
+import Footer from "../../../../FooterItem/Footer";
+ 
+ 
 const mainIngredients = [
   { title: "Idli Batter 🍚" },
   { title: "Sambar Powder🌶️", quantity: "2 tbsp" },
@@ -53,8 +38,11 @@ const kitchenEq = [
 ];
 
 function IdliSambar() {
-const [isValue, setValue] = useState([options[0].value]);
-
+   const [fadeIn, setFadeIn] = useSpring(() => ({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: { duration: 1000 },
+  }));
 const dishProps = {
 dishTitle: IndianBreakFast[1].dishName ,
 dishImage: IndianBreakFast[1].dishImage,
@@ -67,7 +55,7 @@ dishType: "Vegetarian",
 };
  
 return (
-<div className="bg-[#f7f3cd]">
+<div className="bg-[#f7f3cd] min-h-screen">
     <SingleDish
         dishTitle={dishProps.dishTitle}
         dishImage={dishProps.dishImage}
@@ -92,7 +80,23 @@ return (
         </Link>
     </div>
 
-    <RecommendedDishes />
+      <div className='mb-5'>
+        <div className="pb-6 pt-6 px-4 md:px-8">
+          <h1 className='text-center text-xl md:text-3xl lg:text-4xl text-[#00544f] font-semibold'>Recommended Dishes</h1>
+        </div>
+        <Marquee>
+          <div className="flex gap-3 py-3 ml-5 mr-3 overflow-hidden">
+            {RecommendedData.map((dish, index) => (
+              <Flip key={index} cascade left>
+                <animated.div style={fadeIn} className="flex-grow h-full">
+                  <Card2 key={index} title={dish.dishName} time={dish.time} rating={dish.rating} imageUrl={dish.dishImage} />
+                </animated.div>
+              </Flip>
+            ))}
+          </div>
+        </Marquee>
+    </div>
+    <Footer />
 </div>
 );
 }

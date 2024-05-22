@@ -16,13 +16,13 @@ function SeeMoreDishes({ searchTerm, setSearchTerm, filteredDish }) {
           filteredDish.map((dish, index) => (
             <div key={index} className="">
               <Card2
-                title={dish.dishName}
-                dishPath={dish.dishPath}
-                imageUrl={dish.dishImage}
-                time={60}
-                rating={4.5}
-              /> 
-            </div> 
+                title={dish.dish_name}
+                dishPath={`/dish/${dish.dish_name}`}
+                imageUrl={dish.image || 'https://playswellwithbutter.com/wp-content/uploads/2021/04/Grilled-Bell-Peppers-6-960x1440.jpg'}
+                time={dish.cooking_time}
+                rating={0}
+              />
+            </div>
           ))
         ) : (
           <SearchDishNotFound />
@@ -33,3 +33,11 @@ function SeeMoreDishes({ searchTerm, setSearchTerm, filteredDish }) {
 }
 
 export default SeeMoreDishes;
+
+{/* <Card2
+  title={dish.dishName}
+  dishPath={dish.dishPath}
+  imageUrl={dish.dishImage}
+  time={60}
+  rating={4.5}
+/> */}
