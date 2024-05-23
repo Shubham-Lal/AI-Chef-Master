@@ -141,7 +141,20 @@ const Instruction = ({ formData, setFormData, portion }) => {
     return (
         <>
             <p className="custom-text text-3xl text-center pt-4 flex items-center justify-center gap-2 font-medium">
-                Instructions <IoIosPaper className="text-green-600" />
+                Instructions <IoIosPaper className="text-green-600" />     <h1 className="font-semibold mt-6 md:mt-0 text-3xl text-center flex gap-2 items-center ml-3">
+          <div className="group relative inline-block whitespace-nowrap">
+            <span className="flex size-8 px-3 py-1 cursor-pointer items-center justify-center rounded-full bg-primary text-sm font-semibold text-green-600 bg-gray-100">
+              i
+            </span>
+
+            <span
+              role="tooltip"
+              className="pointer-events-none absolute inline-flex items-center justify-center rounded-md px-3 py-1 font-semibold opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 bg-primary text-gray-800  bg-gray-100 min-h-7 text-sm left-1/2 -translate-x-1/2 after:absolute after:block after:size-0 after:border-8 after:border-transparent after:border-t-primary after:-bottom-[0.95rem] after:left-1/2 after:-translate-x-1/3 top-[-2.5rem] z-90 mt-1"
+            >
+              Please add all Instructions separately{" "}
+            </span>
+          </div>
+        </h1>
             </p>
             <p className="custom-text-secondary text-center text-sm italic font-semibold">* Enter quantity for portion {portion}</p>
             <div className="p-1 pt-3 lg:p-8 lg:py-4">

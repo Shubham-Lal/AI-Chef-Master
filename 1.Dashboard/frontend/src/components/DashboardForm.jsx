@@ -407,8 +407,8 @@ const DashboardForm = ({ setTab, form, setForm }) => {
       <div className="flex items-center justify-center my-5">
         <button
           onClick={handleNextTab}
-          disabled={isLoading || error}
-          className={`${isLoading || error ? "bg-gray-600 cursor-not-allowed" : "bg-green-600 hover:bg-green-800"} px-8 py-2 overflow-hidden font-medium rounded-xl border  text-xl md:text-2xl`}
+           disabled={isLoading || error}
+          className={  "bg-green-600 hover:bg-green-800 px-8 py-2 overflow-hidden font-medium rounded-xl border  text-xl md:text-2xl "}
         >
           <span className=" text-white">
             Next
